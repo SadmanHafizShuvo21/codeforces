@@ -1,0 +1,1 @@
+{"name":"Local: G_Sum_of_N","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\G_Sum_of_N.cpp","tests":[{"id":1719241650298,"input":"3\n2\n3\n18\n","output":"4\n15\n36\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\G_Sum_of_N.cpp","group":"local","local":true}

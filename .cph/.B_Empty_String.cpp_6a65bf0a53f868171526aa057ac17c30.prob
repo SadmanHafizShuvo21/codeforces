@@ -1,0 +1,1 @@
+{"name":"Local: B_Empty_String","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\B_Empty_String.cpp","tests":[{"id":1719239152149,"input":"4\nba\nabaabb\na\nbbbbb\n","output":"YES\nYES\nNO\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\B_Empty_String.cpp","group":"local","local":true}

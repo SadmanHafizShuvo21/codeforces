@@ -1,0 +1,1 @@
+{"name":"Local: Two_Largest_Number","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\.cph\\Two_Largest_Number.cpp","tests":[{"id":1729012780841,"input":"5\n1 2 8 5 6","output":"8 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\.cph\\Two_Largest_Number.cpp","group":"local","local":true}

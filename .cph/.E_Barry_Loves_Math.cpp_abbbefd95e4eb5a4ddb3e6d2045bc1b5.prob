@@ -1,0 +1,1 @@
+{"name":"Local: E_Barry_Loves_Math","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\E_Barry_Loves_Math.cpp","tests":[{"id":1719239871710,"input":"4\n2\n9\n5\n10\n","output":"1 1\n3 6\n1 4\n5 5\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\E_Barry_Loves_Math.cpp","group":"local","local":true}

@@ -1,0 +1,1 @@
+{"name":"Local: Bubble_Sort","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\Stacks\\Bubble_Sort.cpp","tests":[{"id":1729082880866,"input":"5\n2 3 1 8 5","output":"1 2 3 5 8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\Stacks\\Bubble_Sort.cpp","group":"local","local":true}

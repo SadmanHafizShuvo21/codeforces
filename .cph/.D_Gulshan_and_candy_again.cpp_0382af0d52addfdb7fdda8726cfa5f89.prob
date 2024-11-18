@@ -1,0 +1,1 @@
+{"name":"Local: D_Gulshan_and_candy_again","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\D_Gulshan_and_candy_again.cpp","tests":[{"id":1719242053825,"input":"5 19\n9 1 2 3 4\n2\n2 4\n","output":"16"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\D_Gulshan_and_candy_again.cpp","group":"local","local":true}
