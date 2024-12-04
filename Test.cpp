@@ -147,6 +147,29 @@
 //     return 0;
 // }
 
+#include <bits/stdc++.h>
+void solve() {
+    std::string s;
+    std::cin >> s;
+    if(s.size()<7){
+        std::cout << "NO\n";
+        return;
+    }
+    for (int i = 0; i <= s.size() - 7; i++) {
+        if (s.substr(i, 7) == "1111111" || s.substr(i, 7) == "0000000") {
+            std::cout << "YES\n";
+            return;
+        }
+    }
+    std::cout << "NO\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    solve();
+    return 0;
+}
 
 
 

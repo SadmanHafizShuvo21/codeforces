@@ -1,14 +1,12 @@
-//24 Nov 2024
+//04 Dec 2024
 #include<bits/stdc++.h>
 using ll = long long;
 void solve(){
-    int n,i=1;
-    std::cin>>n;
-    while(n--){
-        std::cout<<i<<" ";
-        i+=2;
-    }
-    std::cout<<"\n";
+    int a,b,c;
+    std::cin>>a>>b>>c;
+    int x = std::min(a,b);
+    std::cout<<0<<" "<<0<<" "<<x<<" "<<x<<"\n";
+    std::cout<<0<<" "<<x<<" "<<x<<" "<<0<<"\n";
 }
 int main(){
     std::ios::sync_with_stdio(false);
