@@ -4,15 +4,10 @@ using ll = long long;
 void solve(){
     int n;
     std::cin>>n;
-    ll sum = 0, ans=0;
-    for(int i=0;i<n;i++){
-        int x;
-        std::cin>>x;
-        sum+=x;
-        ll step = sqrt(sum);
-        if(step*step==sum && sum%2==1){
-            ans++;
-        }
+    ll ans=1,l=1;
+    while(n>l){
+        l=2*(l+1);
+        ans++;
     }
     std::cout<<ans<<"\n";
 }

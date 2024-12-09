@@ -18,7 +18,6 @@ void solve(){
             if(i!=j){
                 sum+=std::max(a[j],b[j]);
             }
-            
         }
         maxCost=std::max(sum,maxCost);
     }
