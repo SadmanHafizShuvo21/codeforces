@@ -1,3 +1,4 @@
+// 14 Dec 2024
 #include <bits/stdc++.h>
 using ll = long long;
 
@@ -12,7 +13,8 @@ void solve() {
     for (int i = 0; i < n; i++) {
         if (i >= step && s[i] == '0') {
             count++;
-        } else {
+        } 
+        else {
             count = 0;
         }
         if (count == m) {
