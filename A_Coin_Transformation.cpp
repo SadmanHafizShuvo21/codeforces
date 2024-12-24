@@ -1,13 +1,17 @@
-//09 Dec 2024
+//24 Dec 2024
 #include<bits/stdc++.h>
 using ll = long long;
 void solve(){
-    int n;
+    ll n;
     std::cin>>n;
-    ll ans=1,l=1;
-    while(n>l){
-        l=2*(l+1);
-        ans++;
+    ll ans=1;
+    if(n<=3){
+        std::cout<<1<<"\n";
+        return;
+    }
+    while(n>3){
+        n/=4;
+        ans*=2;
     }
     std::cout<<ans<<"\n";
 }
@@ -19,4 +23,3 @@ int main(){
     while(t--)
     solve();
 }
-

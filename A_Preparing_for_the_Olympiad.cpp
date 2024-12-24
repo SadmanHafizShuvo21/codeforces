@@ -1,24 +1,23 @@
-//09 Dec 2024
+//23 Dec 2024
 #include<bits/stdc++.h>
 using ll = long long;
 void solve(){
-    int n,k;
-    std::cin>>n>>k;
-    int a[n];
-    std::map<int,int>mp;
+    int n;
+    std::cin>>n;
+    std::vector<int>a(n),b(n);
     for(int i=0;i<n;i++){
         std::cin>>a[i];
-        a[i]%=k;
-        mp[a[i]]++;
     }
     for(int i=0;i<n;i++){
-        if(mp[a[i]]==1){
-            std::cout<<"YES"<<"\n";
-            std::cout<<i+1<<"\n";
-            return;
+        std::cin>>b[i];
+    }
+    ll ans=a[n-1];
+    for(int i=0;i<n-1;i++){
+        if(a[i]>b[i+1]){
+            ans+=a[i]-b[i+1];
         }
     }
-    std::cout<<"NO"<<'\n';
+    std::cout<<ans<<"\n";
 }
 int main(){
     std::ios::sync_with_stdio(false);
@@ -28,4 +27,7 @@ int main(){
     while(t--)
     solve();
 }
+
+
+
 
