@@ -8,7 +8,7 @@ void solve(){
         int a,t,x;
         std::cin>>a>>t;
         
-        if (a==0) {
+        if(a==0) {
             std::cin>>x;
             v[t].push_back(x);
         } 

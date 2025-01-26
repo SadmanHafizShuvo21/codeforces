@@ -13,18 +13,18 @@ void solve(){
     while(q--) {
         int type, x;
         std::cin>>type;
-        
+
         if (type==0) {
             std::cin >> x;
             s.insert(x);
         } 
-        else if (type == 1) {
+        else if (type==1) {
             std::cout<<*s.begin()<<'\n';
             s.erase(s.begin());
         } 
         else{
-            auto it = std::prev(s.end());
-            std::cout << *it << '\n';
+            auto it=std::prev(s.end());
+            std::cout<<*it<< '\n';
             s.erase(it);
         }
     } 

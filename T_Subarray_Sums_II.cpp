@@ -2,8 +2,7 @@
 using ll = long long;
 
 void solve() {
-    int n;
-    ll x;
+    ll n,x;
     std::cin >> n >> x;
     
     std::vector<ll> a(n);
