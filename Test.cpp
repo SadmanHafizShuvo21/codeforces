@@ -147,29 +147,53 @@
 //     return 0;
 // }
 
+// #include <bits/stdc++.h>
+// void solve() {
+//     std::string s;
+//     std::cin >> s;
+//     if(s.size()<7){
+//         std::cout << "NO\n";
+//         return;
+//     }
+//     for (int i = 0; i <= s.size() - 7; i++) {
+//         if (s.substr(i, 7) == "1111111" || s.substr(i, 7) == "0000000") {
+//             std::cout << "YES\n";
+//             return;
+//         }
+//     }
+//     std::cout << "NO\n";
+// }
+
+// int main() {
+//     std::ios::sync_with_stdio(false);
+//     std::cin.tie(nullptr);
+//     solve();
+//     return 0;
+// }
+
 #include <bits/stdc++.h>
-void solve() {
-    std::string s;
-    std::cin >> s;
-    if(s.size()<7){
-        std::cout << "NO\n";
-        return;
-    }
-    for (int i = 0; i <= s.size() - 7; i++) {
-        if (s.substr(i, 7) == "1111111" || s.substr(i, 7) == "0000000") {
-            std::cout << "YES\n";
-            return;
-        }
-    }
-    std::cout << "NO\n";
-}
+using namespace std;
 
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    solve();
+    int n, t;
+    cin >> n;
+    while (n--) {
+        cin >> t;
+
+        long long sum = 1LL * t * (t + 1) / 2;
+
+
+        long long powerSum = 0;
+        for (long long i = 1; i <= t; i <<= 1) {
+            std::cout<<i<<" ";
+            sum -= i;
+        }
+
+        // sum -= 2 * powerSum;
+
+        cout << sum << endl;
+    }
     return 0;
 }
-
 
 

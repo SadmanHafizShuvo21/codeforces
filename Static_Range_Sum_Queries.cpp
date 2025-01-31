@@ -9,6 +9,9 @@ void solve(){
         sum+=a[i];
         preSum[i]=sum;
     }
+    // for(int i=1;i<=n;i++){
+    //     std::cout<<preSum[i]<<" \n"[i==n];
+    // }
     while(q--){
         ll a,b;
         std::cin>>a>>b;
