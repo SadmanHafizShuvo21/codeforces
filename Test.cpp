@@ -171,29 +171,6 @@
 //     return 0;
 // }
 
-#include <bits/stdc++.h>
-using namespace std;
 
-int main() {
-    int n, t;
-    cin >> n;
-    while (n--) {
-        cin >> t;
-
-        long long sum = 1LL * t * (t + 1) / 2;
-
-
-        long long powerSum = 0;
-        for (long long i = 1; i <= t; i <<= 1) {
-            std::cout<<i<<" ";
-            sum -= i;
-        }
-
-        // sum -= 2 * powerSum;
-
-        cout << sum << endl;
-    }
-    return 0;
-}
 
 
