@@ -4,31 +4,20 @@ using ll = long long;
 void solve() {
     ll n, l, r;
     std::cin >> n >> l >> r;
-    l--, r--;
+    l--;
     std::vector<ll> v(n);
-    
     for (int i = 0; i < n; i++) {
         std::cin >> v[i];
     }
-
-    std::vector<ll> a(v.begin() + l, v.begin() + r + 1);
-    std::vector<ll> b;
+    std::vector<ll> a=v,b=v;
     
-    for (int i = 0; i < n; i++) {
-        if (i < l || i > r) {
-            b.push_back(v[i]);
-        }
-    }
-    std::sort(a.begin(), a.end());
-    std::sort(b.begin(), b.end());
+    std::sort(a.begin()+l,a.end());
+    std::sort(b.begin(), b.begin()+r,std::greater<ll>());
 
-    for (int i = 0; i < std::min(a.size(), b.size()); i++) {
-        if (b[i] < a[a.size() - 1 - i]) {
-            a[a.size() - 1 - i] = b[i];
-        }
-    }
-    ll result = std::accumulate(a.begin(), a.end(), 0LL);
-    std::cout << result << "\n";
+    ll suma = std::accumulate(a.begin()+l, a.begin()+r, 0LL);
+    ll sumb = std::accumulate(b.begin()+l, b.begin()+r, 0LL);
+
+    std::cout << std::min(suma,sumb) << "\n";
 }
 
 int main() {
