@@ -10,20 +10,24 @@ void solve() {
         std::cin>>x;
         a.push_back(x);
     }
-    auto it = unique(a.begin(), a.end());
-    a.erase(it, a.end());
-    // for(int i=0;i<a.size();i++){
-    //     std::cout<<a[i]<<" \n"[i==a.size()-1];
-    // }
-    a.push_back(0);
-    ll cnt=0;
-    for(int i=0;i<a.size();i++){
-        if(i+1!=a[i]){
-            break;
+    if (n == k) {
+        for (int i = 0; i < k / 2; i++) {
+            if (a[2 * i + 1] != i + 1) {
+                std::cout << i + 1 << "\n";
+                return;
+            }
         }
-        cnt++;
+        std::cout << k / 2 + 1 << "\n";
+        return;
     }
-    std::cout<<cnt+1<<"\n";
+    
+    for (int i = 1; i < n - k + 2; i++) {
+        if (a[i] != 1) {
+            std::cout << 1 << "\n";
+            return;
+        }
+    }
+    std::cout << 2 << "\n";
 }
 
 int main() {
