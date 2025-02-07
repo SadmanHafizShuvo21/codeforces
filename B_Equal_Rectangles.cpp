@@ -9,21 +9,17 @@ void solve(){
         std::cin>>a[i];
     }
     std::sort(a.begin(),a.end());
-    std::vector<std::pair<int, int>> pairs;
+    ll area = a[0] * a.back();
+    // std::cout<<area<<"\n";
     bool ok=true;
-    for(int i=0;i<4*n;i+=2){
-        if(a[i]!=a[i+1]){
-            ok=false;
-            break;
-        }
-        pairs.push_back({a[i], a[i]});
+    for(int i=0;i<n;i++){
+        int fi = i*2, rg =4*n-(i*2)-1;
+			if (a[fi]!=a[fi+1] || a[rg] != a[rg-1] || a[fi]*1ll*a[rg] != area) {
+				ok = false;
+                break;
+			}
     }
-    for (int i=0;i<n;i++) {
-        if(pairs[i].first*pairs[2*n-1-i].first != pairs[0].first*pairs[2*n-1].first){
-            ok = false;
-            break;
-        }
-    }
+    
     std::cout<<(ok?"YES":"NO")<<"\n";
 }
 
