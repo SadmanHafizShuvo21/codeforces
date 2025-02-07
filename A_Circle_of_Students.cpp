@@ -14,7 +14,7 @@ void solve(){
     // std::cout<<pos<<"\n";
     bool cw=true,antiCw=true;
     for(int i=1;i<n;i++){
-        if (a[(pos + i) % n] != i + 1) {
+        if (a[(pos + i) % n] != i + 1){
             cw = false;
             break;
         }
