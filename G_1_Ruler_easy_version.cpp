@@ -5,7 +5,7 @@ void solve() {
     int l = 2, r = 1000;
     while (l < r) {
         int mid = l + (r - l) / 2;
-        std::cout << "? 1 " << mid << std::endl;
+        std::cout << "? 1 " << mid << "\n";
         std::cout.flush(); 
 
         int resp; 
@@ -13,11 +13,12 @@ void solve() {
 
         if (resp == mid) {
             l = mid + 1;
-        } else {
+        } 
+		else {
             r = mid;
         }
     }
-    std::cout << "! " << l << std::endl;    
+    std::cout << "! " << l << "\n";    
 }
 
 int main() {
