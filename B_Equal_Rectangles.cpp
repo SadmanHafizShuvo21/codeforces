@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using ll = long long;
 
+
 void solve(){
     ll n;
     std::cin>>n;
@@ -8,16 +9,31 @@ void solve(){
     for(int i=0;i<4*n;i++){
         std::cin>>a[i];
     }
-    std::sort(a.begin(),a.end());
-    ll area = a[0] * a.back();
-    // std::cout<<area<<"\n";
-    bool ok=true;
-    for(int i=0;i<n;i++){
-        int fi = i*2, rg =4*n-(i*2)-1;
-			if (a[fi]!=a[fi+1] || a[rg] != a[rg-1] || a[fi]*1ll*a[rg] != area) {
-				ok = false;
-                break;
-			}
+    bool ok = true;
+    std::map<int, int> freq;
+    for (int stick : a) {
+        freq[stick]++;
+    }
+ 
+    std::vector<int> lengths;
+    for (auto& pair : freq) {
+        if (pair.second % 2 != 0) {
+            ok = false;
+        }
+        for (int i = 0; i < pair.second / 2; ++i) {
+            lengths.push_back(pair.first);
+        }
+    }
+ 
+    std::sort(lengths.begin(), lengths.end());
+ 
+    int area = lengths[0] * lengths[lengths.size() - 1];
+    for (int i = 1; i < lengths.size() / 2; ++i) {
+        int currentArea = lengths[i] * lengths[lengths.size() - 1 - i];
+        if (currentArea != area) {
+            ok = false;
+            break;
+        }
     }
     
     std::cout<<(ok?"YES":"NO")<<"\n";
