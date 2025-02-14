@@ -6,7 +6,7 @@ void solve() {
     std::cin>>n>>r;
     n--;
     if(r>n){
-        std::cout<<1+n*(n+1)/2<<"\n";
+        std::cout<<1+(n*(n+1)/2)<<"\n";
     }
     else{
         std::cout<<r*(r+1)/2<<"\n";
