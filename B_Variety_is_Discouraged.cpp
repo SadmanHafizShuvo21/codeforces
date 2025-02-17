@@ -1,53 +1,42 @@
-#include <iostream>
-#include <vector>
-#include <set>
-#include <map>
-using namespace std;
+#include<bits/stdc++.h>
+using ll = long long;
 
 void solve() {
     int n;
-    cin >> n;
-    vector<int> a(n);
-    map<int, int> freq;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        freq[a[i]]++;
+    std::cin>>n;
+    std::vector<int>v(n),cnt(n+1);
+    for(int i=0;i<n;i++){
+        std::cin>>v[i];
+        v[i]--;
+        cnt[v[i]]++;
     }
-
-    int initial_score = n - freq.size();
-    int max_score = initial_score;
-    pair<int, int> best_removal = {0, 0};
-
-    for (int l = 0; l < n; l++) {
-        map<int, int> temp_freq = freq;
-        for (int r = l; r < n; r++) {
-            temp_freq[a[r]]--;
-            if (temp_freq[a[r]] == 0) temp_freq.erase(a[r]);
-            
-            int new_score = (n - (r - l + 1)) - temp_freq.size();
-            if (new_score > max_score) {
-                max_score = new_score;
-                best_removal = {l + 1, r + 1};
-            } else if (new_score == max_score && (r - l + 1) < (best_removal.second - best_removal.first)) {
-                best_removal = {l + 1, r + 1};
-            }
+    int l=0,r=0,len=0;
+    for(int i=0;i<n;i++){
+        if(cnt[v[i]]>1){
+            len=0;
+        }
+        else{
+            len++;
+        }
+        if(len>r-l){
+            r=i+1;
+            l=i+1-len;
         }
     }
-    
-    if (best_removal.first == 0 && best_removal.second == 0)
-        cout << "0\n";
-    else
-        cout << best_removal.first << " " << best_removal.second << "\n";
+    if(l==r){
+        std::cout<<0<<"\n";
+    }
+    else{
+        std::cout<<l+1<<" "<<r<<"\n";
+    }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     int t;
-    cin >> t;
+    std::cin>>t;
     while (t--) {
         solve();
     }
-    return 0;
 }
