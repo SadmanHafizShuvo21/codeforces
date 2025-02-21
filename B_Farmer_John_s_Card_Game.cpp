@@ -5,7 +5,7 @@ void solve() {
     ll n, m;
     std::cin >> n >> m;
     std::vector<std::vector<ll>> v(n, std::vector<ll>(m));
-    std::vector<ll> p(n, -16);
+    std::vector<ll> p(n, -1);
     bool val = true;
     ll c = 0;
     for (std::vector<ll> &it : v) {
@@ -16,16 +16,20 @@ void solve() {
         if (mini < n){
             p[mini] = c++;
         } 
-        val &= mini < n;
+        else{
+            val=false;
+        }
         std::sort(it.begin(), it.end());
         ll last = it[0] - n;
         for (ll i : it) {
-            val &= last + n == i;
+            if((last+n) != i){
+                val=false;
+            }
             last = i;
         }
     }
     if(!val){
-        std::cout << "-1\n";
+        std::cout << "-1"<<"\n";
         return;
     }
     for(int i=0;i<p.size();i++){
