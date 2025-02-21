@@ -16,8 +16,8 @@ void solve() {
         j=std::max(i,j);
         while(j+1<n && (a[j+1]-a[j])<=1 && (a[j+1]-a[i])<k){
             j++;
-            ans=std::max(ans,j-i+1);
         }
+        ans=std::max(ans,j-i+1);
     }
     std::cout<<ans<<"\n";
 }
