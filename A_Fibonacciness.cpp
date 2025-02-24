@@ -11,6 +11,8 @@ void solve() {
     std::cout<<4-s.size()<<"\n";
 }
 
+// this code is commited by Yasin
+
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
