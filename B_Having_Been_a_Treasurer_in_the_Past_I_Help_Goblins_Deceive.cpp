@@ -2,15 +2,13 @@
 using ll = long long;
 
 void solve() {
-    ll n,k,p;
-    std::cin>>n>>k>>p;
-    k=std::abs(k);
-    if(k>n*p){
-        std::cout<<-1<<"\n";
-    }
-    else{
-        std::cout<<(k+p-1)/p<<"\n";
-    }  
+    ll n;
+    std::string s;
+    std::cin>>n>>s;
+    ll a = std::count(s.begin(),s.end(),'-');
+    ll b = n-a;
+    // std::cout<<a<<" "<<b<<"\n";
+    std::cout<<(a/2)*(a-a/2)*b<<"\n";
 }
 
 int main() {
