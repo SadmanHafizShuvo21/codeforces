@@ -17,9 +17,9 @@ void solve() {
     }
     std::vector<ll>a(n);
     std::iota(a.begin(),a.end(),1);// store data 1 to n
-    for(int i=0;i<n;i++){
-        std::cout<<a[i]<<" \n"[i==n-1];
-    }
+    // for(int i=0;i<n;i++){
+    //     std::cout<<a[i]<<" \n"[i==n-1];
+    // }
     for (int i = 1; i < n; i++) {
         if (isPerfectSquare(1LL * i * (i + 1) / 2)) {
             std::swap(a[i], a[i - 1]);
