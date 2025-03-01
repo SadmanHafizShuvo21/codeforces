@@ -23,7 +23,7 @@ void solve() {
     }
     
     ll pos=x, ans=0;
-    for (int i = 1; i <= n && k; i++) {
+    for (int i = 1; i <= n; i++) {
         k--;
         if (s[i - 1] == 'L') {
             pos--;
