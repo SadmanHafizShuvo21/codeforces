@@ -2,10 +2,15 @@
 using ll = long long;
 
 void solve(){
-    ll n;
-    std::cin>>n;
-
-    std::cout <<n+ll(sqrtl(n)+0.5) << "\n";
+    ll b,c,d;
+    std::cin>>b>>c>>d;
+    ll a = b^d;
+    if((a|d)-(c&a)==d){
+        std::cout<<a<<"\n";
+    }
+    else{
+        std::cout <<-1<< "\n";
+    }
 }
 int main() {
     std::ios::sync_with_stdio(false);
