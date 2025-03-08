@@ -8,11 +8,12 @@ void solve() {
     for(int i=0;i<n;i++){
         std::cin>>a[i];
     }
-    ll ans=*std::min_element(a.begin(),a.end());
-    while(a[ans%n]>ans){
-        ans++;
+    ll i=*std::min_element(a.begin(),a.end());
+    // std::cout<<i<<"\n";
+    while(a[i%n]>i){
+        i++;
     }
-    std::cout<<1+(ans%n)<<"\n";
+    std::cout<<1+(i%n)<<"\n";
 }
 
 int main() {
