@@ -4,7 +4,7 @@ using ll = long long;
 void solve() {
     ll n;
     std::cin >> n;
-    std::vector<ll> a(n + 1);  // 1-based indexing
+    std::vector<ll> a(n + 1);
     for (ll i = 1; i <= n; i++) {
         std::cin >> a[i];
     }

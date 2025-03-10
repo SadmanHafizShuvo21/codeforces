@@ -1,49 +1,38 @@
 #include <bits/stdc++.h>
-using namespace std;
+using ll = long long;
 
 void solve() {
-    int n, k;
-    cin >> n >> k;
-    
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) {
-        a[i] = i + 1;
-    }
-    
-    if (k % 2 == 1) {
-        // If k is odd, swap adjacent pairs
-        for (int i = 0; i < n - 1; i += 2) {
-            swap(a[i], a[i + 1]);
-        }
-    } else {
-        // If k is even, no need to swap, as the sum is already minimized
-        // Just ensure that a_i != i
-        for (int i = 0; i < n; ++i) {
-            if (a[i] == i + 1) {
-                if (i == n - 1) {
-                    swap(a[i], a[i - 1]);
-                } else {
-                    swap(a[i], a[i + 1]);
-                }
+    ll n, k;
+    std::cin >> n >> k;
+
+    if(k%2==0){
+        for(int i=1;i<=n;i++){
+            if(i==n-1){
+                std::cout<<n<<" ";
+            }
+            else{
+                std::cout<<n-1<<" ";
             }
         }
     }
-    
-    for (int i = 0; i < n; ++i) {
-        cout << a[i] << " ";
+    else{
+        for(int i=1;i<=n;i++){
+            if(i==n){
+                std::cout<<n-1<<" ";
+            }
+            else{
+                std::cout<<n<<" ";
+            }
+        }
     }
-    cout << endl;
+    std::cout<<"\n";
 }
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    
-    return 0;
+    std::cin>>t;
+    while(t--)
+    solve();
 }
