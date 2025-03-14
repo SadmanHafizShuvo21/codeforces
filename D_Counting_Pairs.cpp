@@ -12,14 +12,12 @@ void solve(){
         sum+=a[i];
     }
     std::sort(a.begin(),a.end());
+    std::swap(x,y);
+    x=sum-x;
+    y=sum-y;
     for(int i=0;i<n;i++){
-        ll cur =sum-a[i];
-        ll j =lower_bound(a.begin() + i + 1,a.end(), cur - y) - a.begin();
-        if(j == n){
-            continue;
-        } 
-
-        ll k = upper_bound(a.begin() + i + 1 , a.end(), cur - x) - a.begin();
+        ll j =lower_bound(a.begin()+i+1,a.end(),x-a[i])-a.begin();
+        ll k = upper_bound(a.begin()+i+1, a.end(),y-a[i])-a.begin();
         ans += std::max(k - j,0LL);   
     }
     std::cout<<ans<<"\n";
