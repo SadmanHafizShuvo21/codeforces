@@ -11,7 +11,7 @@ void solve(){
         col[n-i-1]=pos+1;
     }
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         std::cout << col[i] << " \n"[i==n-1];
     }
 
