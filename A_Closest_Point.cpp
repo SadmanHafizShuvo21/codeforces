@@ -1,11 +1,18 @@
 #include<bits/stdc++.h>
 using ll = long long;
 void solve(){
-    int l1,l2,r1,r2;
-    std::cin>>l1>>r1>>l2>>r2; 
-    ll l = std::max(l1,l2);
-    ll r = std::min(r1,r2);
-    std::cout<<std::max(r-l+(l1!=l2)+(r1!=r2),1LL)<<"\n";  
+    int n;
+    std::cin>>n; 
+    std::vector<int>a(n);
+    for(int i=0;i<n;i++){
+        std::cin>>a[i];
+    }  
+    if(n==2 && a[1]-a[0]>1){
+        std::cout<<"YES"<<"\n";
+    }
+    else{
+        std::cout<<"NO"<<"\n";
+    }
 }
 int main(){
     std::ios::sync_with_stdio(false);
