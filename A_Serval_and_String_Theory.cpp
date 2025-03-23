@@ -9,8 +9,7 @@ void solve(){
     r=s,srt=s;
     std::sort(srt.begin(),srt.end());
     std::reverse(r.begin(),r.end());
-    std::cout<<s<<" "<<r<<" "<<srt<<"\n";
-
+    // std::cout<<s<<" "<<r<<" "<<srt<<"\n";
     if(r>s || (s>srt && k>0)){
         std::cout<<"YES"<<"\n";
     }
