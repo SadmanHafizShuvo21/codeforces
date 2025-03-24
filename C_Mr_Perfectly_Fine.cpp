@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using ll = long long;
-const ll inf = 10E9+7;
+const ll inf = 1E9+7;
 
 void solve(){
     ll n,k;
