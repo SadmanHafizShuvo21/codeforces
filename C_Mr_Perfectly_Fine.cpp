@@ -3,7 +3,7 @@ using ll = long long;
 const ll inf = 1E9+7;
 
 void solve(){
-    ll n,k;
+    ll n;
     std::cin>>n;
     std::vector<ll>pref(4,inf);
     ll ans = inf;
