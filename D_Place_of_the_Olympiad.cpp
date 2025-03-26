@@ -1,21 +1,21 @@
 #include <bits/stdc++.h>
-using namespace std;
 using ll = long long;
 
 void solve() {
     int t;
-    cin >> t;
+    std::cin >> t;
     while (t--) {
         ll n, m, k;
-        cin >> n >> m >> k;
-        ll max_bench_length = (k + n - 1) / n;  // Calculate the ceiling of k / n
-        cout << min(max_bench_length, m) << '\n'; // Ensure the bench length is not more than m
+        std::cin >> n >> m >> k;
+        ll bench_length = (k + n - 1) / n; 
+        ll ans = m / (m - bench_length + 1);
+        std::cout << ans << '\n'; 
     }
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
     solve();
-    return 0;
 }
