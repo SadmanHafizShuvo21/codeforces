@@ -10,14 +10,12 @@ void solve() {
     }
     std::sort(a.rbegin(), a.rend()); 
     
-    ll ans = 0, count = 0, inf = INT_MAX;
-    for (int i = 0; i < n; ++i) {
-        inf = std::min(inf, a[i]);
+    ll ans = 0, count = 0;
+    for (int i = 0; i < n; i++) {
         count++;
-        if (count * inf >= x) {
+        if (count * a[i] *1ll >= x) {
             ans++;
             count = 0;
-            inf = INT_MAX;
         }
     }
     
