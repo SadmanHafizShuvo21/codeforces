@@ -7,11 +7,11 @@ void solve(){
     double half = a + 0.5;
     ll full_cycles = a / (x + y);
     double remaining = half - full_cycles * (x + y);
-    if (remaining <= x){
-        std::cout << "NO" << "\n";
+    if (remaining > x){
+        std::cout << "YES" << "\n";
     }
     else{
-        std::cout << "YES" << "\n";
+        std::cout << "NO" << "\n";
     }
 }
 
