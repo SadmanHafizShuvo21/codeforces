@@ -4,7 +4,6 @@ using ll = long long;
 void solve() {
     int n;
     std::cin>>n;
-    bool ok = false;
     for(int i=0;i<n;i++){
         std::string s;
         int a,b;
