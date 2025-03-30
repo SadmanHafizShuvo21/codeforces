@@ -5,45 +5,20 @@ void solve() {
     int n;
     std::cin >> n;
     std::vector<ll> a(n);
-    bool has_even = false, has_odd = false;
-    ll max_val = 0;
-    for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
-        if (a[i] % 2 == 0) {
-            has_even = true;
-        } else {
-            has_odd = true;
-        }
-        if (a[i] > max_val) {
-            max_val = a[i];
+    ll sum=0,odd=0;
+    for(int i=0;i<n;i++){
+        std::cin>>a[i];
+        sum+=a[i];
+        if(a[i]%2==1){
+            odd++;
         }
     }
-    if (!has_even || !has_odd) {
-        std::cout << max_val << "\n";
-        return;
+    ll h = *std::max_element(a.begin(),a.end());
+    if(odd == 0 || odd == n){
+        std::cout<<h<<"\n";
     }
-    if (n == 2) {
-        std::cout << a[0] + a[1] << "\n";
-        return;
-    }
-    ll sum = std::accumulate(a.begin(), a.end(), 0LL);
-    ll min_even = LLONG_MAX;
-    ll min_odd = LLONG_MAX;
-    for (ll num : a) {
-        if (num % 2 == 0) {
-            if (num < min_even) {
-                min_even = num;
-            }
-        } else {
-            if (num < min_odd) {
-                min_odd = num;
-            }
-        }
-    }
-    if (sum % 2 == 0) {
-        std::cout << sum - min_odd << "\n";
-    } else {
-        std::cout << sum - min_even << "\n";
+    else{
+        std::cout<<sum-odd+1<<"\n";
     }
 }
 
