@@ -17,7 +17,7 @@ void solve() {
     }
     std::cout<<"YES"<<"\n"; 
     std::vector<ll>schedule=a;
-    ll rem=maxSum-minSum;
+    ll rem=sumTime-minSum;
 
     for(int i=0;i<d && rem>0;i++){
         ll add=std::min((b[i]-a[i]),rem);
