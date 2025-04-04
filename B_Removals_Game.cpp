@@ -4,21 +4,16 @@ using ll = long long;
 void solve() {
     ll n;
     std::cin >> n;
-    std::vector<ll> a(n),b(n),stoa(n+1),stob(n+1);
+    std::vector<ll> a(n),b(n),ra(n);
     for(int i=0;i<n;i++){
         std::cin>>a[i];
-        stoa[a[i]]=i;
     }
     for(int i=0;i<n;i++){
         std::cin>>b[i];
-        stob[b[i]]=i;
     }
-    ll posa=-1,posb=-1;
-    for(int i=1;i<=n;i++){
-        posa=std::max(posa,stoa[i]);
-        posb=std::max(posb,stob[i]);
-    }
-    std::cout<<(a[posa]==b[posb]?"Bob":"Alice")<<"\n";
+    ra=a;
+    std::reverse(ra.begin(),ra.end());
+    std::cout<<((a==b ||ra==b)?"Bob":"Alice")<<"\n";
 }
 
 int main() {
