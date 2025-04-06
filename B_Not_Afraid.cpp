@@ -1,34 +1,43 @@
 #include <bits/stdc++.h>
-using namespace std;
+using ll = long long;
 
-int main() {
+void solve() {
     int n, m;
-    cin >> n >> m;
+    std::cin >> n >> m;
 
-    for (int i = 0; i < m; ++i) {
+    while (m--) {
         int k;
-        cin >> k;
-        unordered_map<int, char> roles;
-        bool valid = true;
-        for (int j = 0; j < k; ++j) {
-            int v;
-            cin >> v;
-            int u = abs(v);
-            char role = (v < 0) ? 'R' : 'M';
-            if (roles.find(u) != roles.end()) {
-                if (roles[u] != role) {
-                    valid = false;
-                }
-            } else {
-                roles[u] = role;
+        std::cin >> k;
+
+        std::vector<int> v(k);
+        std::set<int> group;
+
+        for (int i = 0; i < k; i++) {
+            std::cin >> v[i];
+            group.insert(v[i]);
+        }
+
+        // For each unique universe in the group
+        bool safe = false;
+        int index=-1;
+        for (int i = 1; i <= n; i++) {
+            if (group.count(i) && group.count(-i)) {
+                safe = true;
+                break;
             }
         }
-        if (valid) {
-            cout << "YES" << endl;
-            return 0;
+        if (!safe) {
+            std::cout << "YES" << "\n";
+            return;
         }
     }
 
-    cout << "NO" << endl;
-    return 0;
+    std::cout << "NO" << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    solve();
 }
