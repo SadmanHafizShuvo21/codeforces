@@ -35,7 +35,8 @@ void solve() {
     for (int i = 0, l = 0, r = n - 1; i < n; i++) {
         if (p[i] == i) {
             q[ia[i]] = n / 2;
-        } else if (p[i] > i) {
+        } 
+        else if (p[i] > i) {
             q[ia[i]] = l++;
             q[ia[p[i]]] = r--;
         }
@@ -64,6 +65,4 @@ int main() {
     while (t--) {
         solve();
     }
-
-    return 0;
 }
