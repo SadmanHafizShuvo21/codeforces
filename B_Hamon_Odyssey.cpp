@@ -5,21 +5,23 @@ void solve() {
     ll n;
     std::cin >> n;
     std::vector<ll> a(n);
+
+    ll tar = ~0;
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
-    }
-
-    ll tar = a[0];
-    for (int i = 1; i < n; i++) {
         tar &= a[i];
     }
 
+    if (tar != 0) {
+        std::cout << 1 << "\n";
+        return;
+    }
     ll cnt = 0;
     ll cur = ~0; 
 
     for (int i = 0; i < n; i++) {
         cur &= a[i];
-        if (cur == tar) {
+        if (cur == 0) {
             cnt++;
             cur = ~0;
         }
