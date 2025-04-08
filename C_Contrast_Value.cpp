@@ -12,7 +12,7 @@ void solve() {
     n = std::unique(a.begin(), a.end()) - a.begin();
     int ans = 0;
     for (int i = 0; i < n; i++) {
-        if (i == 0 || i == n - 1 || ((a[i] > a[i-1] == a[i] > a[i + 1]))) {
+        if (i == 0 || i == n - 1 || ((a[i] > a[i - 1]) == (a[i] > a[i + 1]))) {
             ans++;
         }
     }
@@ -28,6 +28,4 @@ int main() {
     while (t--) {
         solve();
     }
-
-    return 0;
 }
