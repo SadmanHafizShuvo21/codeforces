@@ -23,9 +23,13 @@ void solve() {
                     have++;
                 }
                 j++;
-                if (have == x) break;
+                if (have == x) {
+                    break;
+                }
             }
-            if (have < x) break;
+            if (have < x) {
+                break;
+            }
             seg++;
             i = j;
         }
@@ -35,8 +39,12 @@ void solve() {
     int l = 0, r = n + 1;
     while (l < r - 1) {
         int m = (l + r) / 2;
-        if (canDivide(m)) l = m;
-        else r = m;
+        if (canDivide(m)) {
+            l = m;
+        }
+        else {
+            r = m;
+        }
     }
 
     std::cout << l << "\n";
