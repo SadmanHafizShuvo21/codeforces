@@ -5,42 +5,47 @@ void solve() {
     int q;
     std::cin >> q;
     std::vector<int> a;
-    std::string res;
-    bool wrapped = false;
-    int first = -1, last = -1;
+    std::string s;
+    bool ok = false;
+    int st = -1, last = -1;
 
     while (q--) {
         int x;
         std::cin >> x;
         if (a.empty()) {
             a.push_back(x);
-            first = last = x;
-            res += '1';
-        } else if (!wrapped) {
+            st = last = x;
+            s += '1';
+        } 
+        else if (!ok) {
             if (x >= last) {
                 a.push_back(x);
                 last = x;
-                res += '1';
-            } else if (x <= first) {
+                s += '1';
+            } 
+            else if (x <= st) {
                 a.push_back(x);
                 last = x;
-                wrapped = true;
-                res += '1';
-            } else {
-                res += '0';
+                ok = true;
+                s += '1';
+            } 
+            else {
+                s += '0';
             }
-        } else {
-            if (x >= last && x <= first) {
+        } 
+        else {
+            if (x >= last && x <= st) {
                 a.push_back(x);
                 last = x;
-                res += '1';
-            } else {
-                res += '0';
+                s += '1';
+            } 
+            else {
+                s += '0';
             }
         }
     }
 
-    std::cout << res << "\n";
+    std::cout << s << "\n";
 }
 
 int main() {
