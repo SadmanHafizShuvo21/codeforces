@@ -15,9 +15,7 @@ void solve() {
         if (s[i] != '0') {
             int zeros = pref[i];
             int cur = zeros + 1;
-            if (cur > len) {
-                len = cur;
-            }
+            len=std::max(len,cur);
         }
     }
 
