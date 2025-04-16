@@ -6,26 +6,16 @@ void solve() {
     ll m, k;
     std::cin >> n >> m >> k;
     std::vector<ll> a(n);
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         std::cin >> a[i];
     }
 
     std::sort(a.begin(),a.end());
-    std::priority_queue<ll, std::vector<ll>, std::greater<ll>> pq;
-    ll  sum = 0;
-
-    for (int i = 0; i < n; ++i) {
-        ll price = a[i] + sum;
-        for (ll j = 0; j < m; ++j) {
-            pq.push(price);
-        }
-        sum += m;
-    }
-
-    ll ans = 0;
-    for (ll i = 0; i < k; ++i) {
-        ans += pq.top();
-        pq.pop();
+    ll  ans = k * (k - 1) / 2;
+    for (ll i = 0; i < n; i++) {
+        ll t = std::min(m , k);
+        k -= t;
+        ans += (2 * a[i] - t + 1) * t / 2;
     }
 
     std::cout << ans << '\n';
