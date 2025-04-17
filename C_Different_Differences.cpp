@@ -2,11 +2,25 @@
 using ll = long long;
 
 void solve() {
-    int n, k;
-    std::cin >> n >> k;
+    int k, n;
+    std::cin >> k >> n;
 
-    for (int i = 1; i <= n; i++) {
-        std::cout << i << " \n"[i == n];
+    std::vector<int> ans;
+    int cur = 1, diff = 1;
+
+    for (int i = 0; i < k; i++) {
+        ans.push_back(cur);
+        if ((n - (cur + diff)) >= (k - i - 2)) {
+            cur += diff;
+            diff++;
+        } 
+        else {
+            cur++;
+        }
+    }
+
+    for (int i = 0; i < k; i++) {
+        std::cout << ans[i] << " \n"[i == k - 1];
     }
 }
 
