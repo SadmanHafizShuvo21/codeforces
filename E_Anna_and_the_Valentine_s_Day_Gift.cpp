@@ -24,16 +24,16 @@ void solve() {
         }
     }
 
-    std::sort(a.begin(), a.end(), std::greater<>());
+    std::sort(a.rbegin(), a.rend());
     for (int i = 1; i < n; i += 2) {
         ans += a[i];
     }
 
     if (ans >= m + 1) {
-        std::cout << "Sasha\n";
+        std::cout << "Sasha" << "\n";
     } 
     else {
-        std::cout << "Anna\n";
+        std::cout << "Anna" << "\n";
     }
 }
 
