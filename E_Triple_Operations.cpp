@@ -2,7 +2,7 @@
 using ll = long long;
 
 const int MAX = 2e5 + 10;
-int ops[MAX], prefix[MAX + 1];
+std::vector<int> ops(MAX), prefix(MAX + 1);
 
 void precompute() {
     for (int i = 0; i < MAX; i++) {
@@ -29,8 +29,8 @@ int main() {
     precompute();
 
     int t;
-    std::cin>>t;
-    while(t--){
+    std::cin >> t;
+    while (t--) {
         solve();
     }
 }
