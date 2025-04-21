@@ -10,8 +10,6 @@ void dfs(int x, int y) {
         return;
     }
     vis[x][y] = 1;
-
-    // Try switching row
     int nx = 1 - x, ny = y;
     if (s[nx][ny] == '<') {
         ny--;
@@ -23,7 +21,6 @@ void dfs(int x, int y) {
         dfs(nx, ny);
     }
 
-    // Try moving left or right in same row
     for (int dy : {-1, 1}) {
         int nx = x, ny = y + dy;
         if (0 <= ny && ny < n) {
