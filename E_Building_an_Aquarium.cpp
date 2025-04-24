@@ -39,9 +39,9 @@ void solve() {
     }
 
     std::sort(a.begin(),a.end());
-    ll lo = 1, hi = a[n-1] + x + 1, ans = 1;
+    ll lo = 1, hi = a[n-1] + x + 1;
 
-    ans = binarySearch(a, x, lo, hi);
+    ll ans = binarySearch(a, x, lo, hi);
     std::cout << ans << "\n";
 }
 
