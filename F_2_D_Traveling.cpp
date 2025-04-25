@@ -13,21 +13,17 @@ void solve() {
         pr[i]={x,y};
     }
 
-    
-
-    ll res = std::abs(pr[a].first - pr[b].first) + std::abs(pr[a].second - pr[b].second);
-
-    ll mA = 1e15;
-    ll mB = 1e15;
-
+    ll x = 1e18;
+    ll y = 1e18;
+    ll ans = std::abs(pr[a].first - pr[b].first) + std::abs(pr[a].second - pr[b].second);
     for (int i = 0; i < k; i++) {
-        mA = std::min(mA, std::abs(pr[a].first - pr[i].first) + std::abs(pr[a].second - pr[i].second));
-        mB = std::min(mB, std::abs(pr[b].first - pr[i].first) + std::abs(pr[b].second - pr[i].second));
+        x = std::min(x, std::abs(pr[a].first - pr[i].first) + std::abs(pr[a].second - pr[i].second));
+        y = std::min(y, std::abs(pr[b].first - pr[i].first) + std::abs(pr[b].second - pr[i].second));
     }
 
-    res = std::min(res, mA + mB);
+    ans = std::min(ans, x + y);
 
-    std::cout << res << "\n";
+    std::cout << ans << "\n";
 }
 
 int main() {

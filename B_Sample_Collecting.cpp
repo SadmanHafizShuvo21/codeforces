@@ -1,18 +1,9 @@
 #include <bits/stdc++.h>
 using ll = long long;
-
 std::vector<std::pair<int, int>> ar;
-int dp[10010][110][2];
 
 int opt(int n, int x) {
-    for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= x; j++) {
-            for (int h = 0; h < 2; h++) {
-                dp[i][j][h] = 0;
-            }
-        }
-    }
-
+    std::vector<std::vector<std::vector<int>>> dp(n + 1, std::vector<std::vector<int>>(x + 1, std::vector<int>(2, 0)));
     for (int pos = 0; pos < n; pos++) {
         int w = ar[pos].first;
         int v = ar[pos].second;
