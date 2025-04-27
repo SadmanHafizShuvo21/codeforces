@@ -10,19 +10,21 @@ void solve() {
         std::cin >> a[i];
         mp[a[i]]++;
     }
-    bool ok = 0;
+    bool ok = false;
     for (auto& [x, v] : mp) {
         if (v >= 4) {
-            ok = 1;
+            ok = true;
             break;
         }
     }
     if (ok) {
-        std::cout << "Yes\n";
+        std::cout << "Yes" << "\n";
         return;
     }
     std::vector<int> b;
-    for (auto& [x, _] : mp) b.push_back(x);
+    for (auto it = mp.begin(); it != mp.end(); it++) {
+        b.push_back(it->first);
+    }
     std::sort(b.begin(), b.end());
     int c = 0, p = -1e9;
     for (int x : b) {
@@ -30,7 +32,7 @@ void solve() {
         if (mp[x] >= 2) {
             c++;
             if (c >= 2) {
-                ok = 1;
+                ok = true;
                 break;
             }
         }
