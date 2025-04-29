@@ -26,25 +26,37 @@ void solve() {
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
     }
-    std::sort(a.rbegin(), a.rend());
     
-    ll sum = 0;
-    int ans = 0;
-    for (int i = 1; i <= n; i++) {
-        sum += a[i - 1];
-        sum -= primes[i - 1];
-        if (sum >= 0) {
-            ans = i;
+    std::vector<int> nxt(n);
+    nxt[n - 1] = n;
+    for (int i = n - 2; i >= 0; i--) {
+        if (a[i] == a[i+1]) {
+            nxt[i] = nxt[i+1];
+        }
+        else{
+            nxt[i] = i+1;
         }
     }
-    std::cout << n - ans << "\n";
+
+    ll q;   
+    std::cin >> q;
+    while (q--) {
+        ll l, r;
+        std::cin >> l >> r;
+        l--;
+        if (nxt[l] >= r) {
+            std::cout << "-1 -1" << "\n";
+        }
+        else {
+            std::cout << l+1 << ' ' <<  nxt[l] + 1<< '\n';
+        }
+    }  
+    std::cout << "\n"; 
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    
-    sieve(1E7);
     
     int t;
     std::cin >> t;
