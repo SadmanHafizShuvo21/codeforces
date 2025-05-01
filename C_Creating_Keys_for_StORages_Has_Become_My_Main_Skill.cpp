@@ -5,9 +5,8 @@ void solve() {
     ll n, x;
     std::cin >> n >> x;
     std::vector<ll> a(n);
-    ll cur = 0;
-    ll val = 0;
 
+    ll cur = 0, val = 0;
     while (cur < n && ((cur & x) == cur)) {
         val |= cur;
         cur++;
@@ -24,7 +23,10 @@ void solve() {
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
+
     int t;
     std::cin >> t;
-    while (t--) solve();
+    while (t--) {
+        solve();
+    }
 }
