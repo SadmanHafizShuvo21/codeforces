@@ -19,7 +19,6 @@ void solve() {
         else {
             std::cout << n + 3 << "\n";
         }
-        return;
     }
     else if (x == 1) {
         if(n % 2 == 0) {
@@ -28,11 +27,10 @@ void solve() {
         else {
             std::cout << n << "\n";
         }
-        return;
     }
-
-    std::cout << ans << "\n";
-    
+    else {
+        std::cout << ans << "\n";
+    }
 }
 
 int main() {
