@@ -12,19 +12,15 @@ void solve() {
 
     ll max = *std::max_element(a.begin(), a.end());
     ll min = *std::min_element(a.begin(), a.end());
-
-    if (max - min - 1 > k) {
-        std::cout << "Jerry" <<"\n";
-        return;
-    }
-
     ll count = std::count(a.begin(), a.end(), max);
-    if (max - min - 1 == k && count > 1) {
+    ll sum = std::accumulate(a.begin(), a.end(), 0LL);
+
+    ll rem = max - min - 1;
+    if (rem > k || (rem == k && count > 1)) {
         std::cout << "Jerry" <<"\n";
         return;
     }
     
-    ll sum = std::accumulate(a.begin(), a.end(), 0LL);
     if (sum % 2 == 0) {
         std::cout << "Jerry" << "\n";
     }
