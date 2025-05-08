@@ -10,14 +10,14 @@ void solve() {
         std::cin >> a[i];
     } 
 
-    std::vector< ll > arr(n);
-    arr = a;
+    std::vector< ll > arr = a;
     std::sort(arr.begin(), arr.end());
 
     ll l = 0, r = n - 1;
     while(l < n && a[l] == arr[l]) {
         l++;
     }
+
     while(r >= 0 && a[r] == arr[r]) {
         r--;
     }
@@ -33,9 +33,10 @@ void solve() {
     if(a == arr) {
         std::cout << "yes" << "\n";
         std::cout << l + 1 << " " << r + 1;
-        return;
     }
-    std::cout << "no" << "\n"; 
+    else {
+        std::cout << "no" << "\n";
+    } 
 }
 
 int main() {
