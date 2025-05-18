@@ -1,11 +1,18 @@
 #include <bits/stdc++.h>
+using ll = long long;
 
+ll cal(ll x) {
+    ll ans = 0;
+    while (x > 1) {
+        x = (x + 1) / 2;
+        ans++;
+    }
+    return ans;
+}
 void solve() {
     int n, m, a, b;
     std::cin >> n >> m >> a >> b;
-    int vert = std::min(a - 1, n - a);
-    int hori = std::min(b - 1, m - b);
-    std::cout << std::max(vert, hori) << '\n';
+    std::cout << 1 + std::min((cal(m) + std::min(cal(a), cal(n - a + 1))), (cal(n) + std::min(cal(b), cal(m - b + 1)))) << "\n";
 }
 
 int main() {
