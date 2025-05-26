@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
-using namespace std;
-
-typedef long long ll;
+using ll = long long;
 
 struct Point {
     ll x, y;
@@ -11,115 +9,64 @@ ll compute_area(ll min_x, ll max_x, ll min_y, ll max_y) {
     return (max_x - min_x + 1) * (max_y - min_y + 1);
 }
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        vector<Point> points(n);
-        vector<ll> x(n), y(n);
-        for (int i = 0; i < n; ++i) {
-            cin >> points[i].x >> points[i].y;
-            x[i] = points[i].x;
-            y[i] = points[i].y;
-        }
-        
-        if (n == 1) {
-            cout << 1 << '\n';
-            continue;
-        }
-        
-        vector<ll> sorted_x = x;
-        vector<ll> sorted_y = y;
-        sort(sorted_x.begin(), sorted_x.end());
-        sort(sorted_y.begin(), sorted_y.end());
-        
-        ll global_min_x = sorted_x[0];
-        ll global_max_x = sorted_x.back();
-        ll global_min_y = sorted_y[0];
-        ll global_max_y = sorted_y.back();
-        
-        auto count_min_x = upper_bound(sorted_x.begin(), sorted_x.end(), global_min_x) - lower_bound(sorted_x.begin(), sorted_x.end(), global_min_x);
-        auto count_max_x = upper_bound(sorted_x.begin(), sorted_x.end(), global_max_x) - lower_bound(sorted_x.begin(), sorted_x.end(), global_max_x);
-        auto count_min_y = upper_bound(sorted_y.begin(), sorted_y.end(), global_min_y) - lower_bound(sorted_y.begin(), sorted_y.end(), global_min_y);
-        auto count_max_y = upper_bound(sorted_y.begin(), sorted_y.end(), global_max_y) - lower_bound(sorted_y.begin(), sorted_y.end(), global_max_y);
-        
-        ll original_area = compute_area(global_min_x, global_max_x, global_min_y, global_max_y);
-        ll min_area = original_area;
-        
-        for (const auto& p : points) {
-            ll x_val = p.x;
-            ll y_val = p.y;
-            
-            ll new_min_x, new_max_x, new_min_y, new_max_y;
-            
-            // Compute new_min_x
-            if (x_val == global_min_x) {
-                if (count_min_x > 1) {
-                    new_min_x = global_min_x;
-                } else {
-                    new_min_x = sorted_x[1];
-                }
-            } else {
-                new_min_x = global_min_x;
-            }
-            
-            // Compute new_max_x
-            if (x_val == global_max_x) {
-                if (count_max_x > 1) {
-                    new_max_x = global_max_x;
-                } else {
-                    new_max_x = sorted_x[sorted_x.size() - 2];
-                }
-            } else {
-                new_max_x = global_max_x;
-            }
-            
-            // Compute new_min_y
-            if (y_val == global_min_y) {
-                if (count_min_y > 1) {
-                    new_min_y = global_min_y;
-                } else {
-                    new_min_y = sorted_y[1];
-                }
-            } else {
-                new_min_y = global_min_y;
-            }
-            
-            // Compute new_max_y
-            if (y_val == global_max_y) {
-                if (count_max_y > 1) {
-                    new_max_y = global_max_y;
-                } else {
-                    new_max_y = sorted_y[sorted_y.size() - 2];
-                }
-            } else {
-                new_max_y = global_max_y;
-            }
-            
-            ll a = compute_area(new_min_x, new_max_x, new_min_y, new_max_y);
-            ll other_count = n - 1;
-            
-            ll current_area;
-            if (a > other_count) {
-                current_area = a;
-            } else {
-                ll option1 = (new_max_x - new_min_x + 2) * (new_max_y - new_min_y + 1);
-                ll option2 = (new_max_x - new_min_x + 1) * (new_max_y - new_min_y + 2);
-                current_area = min(option1, option2);
-            }
-            
-            if (current_area < min_area) {
-                min_area = current_area;
-            }
-        }
-        
-        cout << min(original_area, min_area) << '\n';
+void solve() {
+    int n;
+    std::cin >> n;
+    std::vector<Point> points(n);
+    std::vector<ll> x(n), y(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> points[i].x >> points[i].y;
+        x[i] = points[i].x;
+        y[i] = points[i].y;
     }
-    
-    return 0;
+
+    if (n == 1) {
+        std::cout << 1 << '\n';
+        return;
+    }
+
+    std::vector<ll> sx = x, sy = y;
+    std::sort(sx.begin(), sx.end());
+    std::sort(sy.begin(), sy.end());
+
+    ll min_x = sx[0], max_x = sx.back();
+    ll min_y = sy[0], max_y = sy.back();
+
+    int cnt_min_x = std::upper_bound(sx.begin(), sx.end(), min_x) - std::lower_bound(sx.begin(), sx.end(), min_x);
+    int cnt_max_x = std::upper_bound(sx.begin(), sx.end(), max_x) - std::lower_bound(sx.begin(), sx.end(), max_x);
+    int cnt_min_y = std::upper_bound(sy.begin(), sy.end(), min_y) - std::lower_bound(sy.begin(), sy.end(), min_y);
+    int cnt_max_y = std::upper_bound(sy.begin(), sy.end(), max_y) - std::lower_bound(sy.begin(), sy.end(), max_y);
+
+    ll ori = compute_area(min_x, max_x, min_y, max_y), res = ori;
+
+    for (auto [px, py] : points) {
+        ll nminx = (px == min_x && cnt_min_x == 1 ? sx[1] : min_x);
+        ll nmaxx = (px == max_x && cnt_max_x == 1 ? sx[n - 2] : max_x);
+        ll nminy = (py == min_y && cnt_min_y == 1 ? sy[1] : min_y);
+        ll nmaxy = (py == max_y && cnt_max_y == 1 ? sy[n - 2] : max_y);
+
+        ll a = compute_area(nminx, nmaxx, nminy, nmaxy);
+        ll rest = n - 1;
+        ll cur;
+        if (a > rest) {
+            cur = a;
+        } else {
+            ll op1 = (nmaxx - nminx + 2) * (nmaxy - nminy + 1);
+            ll op2 = (nmaxx - nminx + 1) * (nmaxy - nminy + 2);
+            cur = std::min(op1, op2);
+        }
+        res = std::min(res, cur);
+    }
+
+    std::cout << std::min(ori, res) << '\n';
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int t;
+    std::cin >> t;
+    while (t--) {
+        solve();
+    }
 }
