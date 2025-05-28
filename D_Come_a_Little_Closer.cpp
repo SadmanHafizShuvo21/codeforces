@@ -50,7 +50,8 @@ void solve() {
         ll cur;
         if (a > rest) {
             cur = a;
-        } else {
+        } 
+        else {
             ll op1 = (nmaxx - nminx + 2) * (nmaxy - nminy + 1);
             ll op2 = (nmaxx - nminx + 1) * (nmaxy - nminy + 2);
             cur = std::min(op1, op2);
