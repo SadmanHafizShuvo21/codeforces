@@ -5,7 +5,7 @@ void solve() {
     ll n;
     std::cin >> n;
     
-    ll ans = (1 << 30) - 1;
+    ll ans = (1 << 31) - 1;
     for (int i = 0; i < n; i++) {
         ll a;
         std::cin >> a;
