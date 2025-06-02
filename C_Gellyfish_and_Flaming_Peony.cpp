@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using ll = long long;
+const ll MAX = 5000;
 
 int gcd(int a, int b) {
     return b ? gcd(b, a % b) : a;
@@ -27,12 +28,11 @@ void solve() {
         return;
     }
 
-    const int MAX_VAL = 5000;
-    std::vector<int> dist(MAX_VAL + 1, INT_MAX);
+    std::vector<int> dist(MAX + 1, INT_MAX);
     std::queue<int> q;
 
     for (int x : a) {
-        if (x <= MAX_VAL && dist[x] == INT_MAX) {
+        if (x <= MAX && dist[x] == INT_MAX) {
             dist[x] = 0;
             q.push(x);
         }
@@ -43,7 +43,7 @@ void solve() {
         q.pop();
         for (int x : a) {
             int v = gcd(u, x);
-            if (v <= MAX_VAL && dist[v] == INT_MAX) {
+            if (v <= MAX && dist[v] == INT_MAX) {
                 dist[v] = dist[u] + 1;
                 q.push(v);
             }
