@@ -1,20 +1,19 @@
 #include <bits/stdc++.h>
 using ll = long long;
-constexpr ll inf = 1E18;
+
+ll find (ll x) {
+    ll a = 0;
+    while(x > 0) {
+        x >>= 1;
+        a++;
+    }
+    return a;
+}
 
 void solve() {
     ll x;
     std::cin >> x;
-    if (x == 1) {
-        std::cout << 3 << '\n';
-        return;
-    }
-    ll b = 0;
-    ll temp = x;
-    while (temp > 0) {
-        temp >>= 1;
-        b++;
-    }
+    ll b = find(x);
     std::cout << 2 * b + 1 << '\n';
 }
 
