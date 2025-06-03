@@ -5,23 +5,24 @@ void solve() {
     int n;
     std::cin >> n;
     std::vector<ll> a(n);
-    for (int i = 0; i < n; ++i) std::cin >> a[i];
-
-    if (std::all_of(a.begin(), a.end(), [&](ll x) { return x == a[0]; })) {
-        std::cout << 0 << '\n';
-        return;
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
     }
 
-    ll res = LLONG_MAX;
-    for (int i = 0; i < n; ) {
-        int j = i;
-        while (j + 1 < n && a[j + 1] == a[i]) ++j;
-        ll cost = 1LL * i * a[i] + 1LL * (n - j - 1) * a[i];
-        res = std::min(res, cost);
-        i = j + 1;
+    ll ans = 1e18;
+    int cnt = 0;
+    while (cnt < n) {
+      int l = cnt;
+      while (l + 1 < n && a[l + 1] == a[l]) {
+        l++;
+      }
+      int len = l - cnt + 1;
+      ll cur = ll(n - len) * a[cnt];
+      ans = std::min(ans, cur);
+      cnt = l + 1;
     }
+    std::cout << ans << '\n';
 
-    std::cout << res << '\n';
 }
 
 int main() {
