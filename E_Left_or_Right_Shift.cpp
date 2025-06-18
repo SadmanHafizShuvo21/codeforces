@@ -2,51 +2,44 @@
 using ll = long long;
 
 void solve() {
-    ll n,k;
+    ll n, k;
     std::cin >> n >> k;
-
-    std::string s;
+    std::string s, res;
     std::cin >> s;
 
+    ll R = k;
     for (int i = 0; i < n; i++) {
-        int dis = s[i] - 'a';
-        int r = 26 - dis;
-        int cost = std::min(dis, r);
-
-        if (k >= cost) {
-            if (dis <= r) {
-                k -= dis;
-                s[i] = 'a';
+        bool last = (i == n - 1);
+        char found = '?';
+        for (char c = 'a'; c <= 'z'; c++) {
+            int a_val = s[i] - 'a';
+            int b_val = c - 'a';
+            int diff = std::abs(a_val - b_val);
+            int d = std::min(diff, 26 - diff);
+            if (last) {
+                if (d <= R && (R - d) % 2 == 0) {
+                    found = c;
+                    R -= d;
+                    break;
+                }
             } 
             else {
-                k -= r;
-                s[i] = 'a';
+                if (d <= R) {
+                    found = c;
+                    R -= d;
+                    break;
+                }
             }
-        } 
-        else {
-            int ch = (s[i] - 'a' - k + 26) % 26;
-            s[i] = 'a' + ch;
-            k = 0;
-            break;
         }
+        res += found;
     }
-
-    if (k > 0) {
-        int l = s.find_last_not_of('a');
-        if (l != std::string::npos) {
-            int ch = (s[l] - 'a' - k + 26) % 26;
-            s[l] = 'a' + ch;
-        }
-    }
-
-    std::cout << s << '\n';
+    std::cout << res << '\n';
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-
-    int t;
+    int t; 
     std::cin >> t;
     while (t--) {
         solve();
