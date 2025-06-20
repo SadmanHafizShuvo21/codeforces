@@ -7,16 +7,9 @@ void solve() {
 
     ll n = s.size();
     for (int i = 0; i < n; i++) {
-        int k = i;
-        for (int j = i; j < n && j < i + 10; j++) {
-            if (s[j] - j > s[k] - k) {
-                k = j;
-            }
-        }
-        while (k > i) {
-            s[k]--;
-            std::swap(s[k - 1], s[k]);
-            k--;
+        for (int j = i; j > 0 && s[j] >= s[j - 1] + 2; j--) {
+            s[j]--;
+            std::swap(s[j - 1], s[j]);
         }
     }
     std::cout << s << "\n";
