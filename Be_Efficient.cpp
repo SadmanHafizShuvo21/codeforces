@@ -10,7 +10,7 @@ void solve(int t) {
 
     std::map<ll, ll> mp;
     ll sum = 0, ans = 0;
-    mp[0] = 1;
+    mp[0]++;
 
     for (int i = 0; i < n; i++) {
         sum = (sum + a[i]) % m;
