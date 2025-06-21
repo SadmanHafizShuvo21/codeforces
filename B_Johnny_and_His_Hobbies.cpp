@@ -5,18 +5,20 @@ void solve() {
     ll n;
     std::cin >> n;
     std::vector<ll> a(n);
-    std::set<ll> s;
 
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
-        s.insert(a[i]);
     }
-    for(int i = 1; i < 1024; i++) {
-        std::set<ll> s1;
-        for (int x : a) {
-            s1.insert(x ^ i);
+
+    std::sort(a.begin(), a.end());
+    for(int i = 1; i <= 1024; i++) {
+        bool ok = true;
+        for (auto x : a) {
+            if (!std::binary_search(a.begin(), a.end(), x ^ i)) {
+                ok = false;
+            }
         }
-        if (s == s1) {
+        if (ok) {
             std::cout << i << "\n";
             return;
         }
