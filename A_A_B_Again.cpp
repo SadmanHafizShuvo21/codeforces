@@ -1,11 +1,10 @@
-//07 Aug 2024
 #include <bits/stdc++.h>
 using ll = long long;
 
 void solve() {
-    std::string s;
-    std::cin >> s;
-    std::cout << (s[0]-'0') + s[1] - '0' << "\n";
+    ll n;
+    std::cin >> n;
+    std::cout << n / 10 + n % 10 << "\n";
 }
 
 int main() {
