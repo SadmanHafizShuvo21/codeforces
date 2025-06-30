@@ -11,7 +11,9 @@ void solve() {
     ll sum = std::accumulate(a.begin(), a.end(), 0LL);
     ll mx = *std::max_element(a.begin(), a.end());
 
-    std::cout << (sum %2 == 0 && sum >= 2 * mx ? "YES" : "NO") << '\n';
+    // std::cout << "Sum: " << sum << ", Max: " << mx << '\n';
+
+    std::cout << (sum % 2 == 0 && sum >= 2 * mx ? "YES" : "NO") << '\n';
 }
 
 int main() {
