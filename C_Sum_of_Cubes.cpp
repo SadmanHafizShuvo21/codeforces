@@ -12,10 +12,6 @@ void solve() {
             std::cout << "YES" << '\n';
             return;
         }
-        if ((j + 1) > 0 && (j + 1) * (j + 1) * (j + 1) == b) {
-            std::cout << "YES" << '\n';
-            return;
-        }
     }
     std::cout << "NO" << '\n';
 }
