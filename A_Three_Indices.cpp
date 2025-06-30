@@ -18,7 +18,8 @@ void solve() {
     }
     if (idx == -1) {
         std::cout << "NO\n";
-    } else {
+    } 
+    else {
         std::cout << "YES\n";
         std::cout << idx + 1 << ' ' << idx + 2 << ' ' << idx + 3 << '\n';
     }
