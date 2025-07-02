@@ -8,15 +8,7 @@ void solve() {
     std::cin >> s;
 
     int one = std::count(s.begin(), s.end(), '1');
-    if(one <= k) {
-        std::cout << "Alice" << '\n';
-    } 
-    else if(2 * k <= n) {
-        std::cout << "Bob" << '\n';
-    } 
-    else {
-        std::cout << "Alice" << '\n';
-    }
+    std::cout << ((one <= k || 2 * k > n) ? "Alice" : "Bob") << '\n';
 }
 int main() {
     std::ios::sync_with_stdio(false);
