@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using ll = long long;
 
 void solve() {
@@ -7,7 +7,7 @@ void solve() {
     std::vector<ll> a(n);
     for (ll i = 0; i < n; i++) {
         std::cin >> a[i];
-        c -= (1LL * a[i] * a[i]);
+        c -= 1LL * a[i] * a[i];
     }
 
     c /= 4;
@@ -15,12 +15,11 @@ void solve() {
     ll l = 0, r = 1e9 + 7;
     while (l < r) {
         ll mid = (l + r) / 2;
-        ll cur = __int128_t(n) * mid * mid + __int128_t(sum) * mid;
-        
+        __int128_t cur = (__int128_t)n * mid * mid + (__int128_t)sum * mid;
+
         if (cur < c) {
             l = mid + 1;
-        } 
-        else {
+        } else {
             r = mid;
         }
     }
@@ -32,7 +31,7 @@ int main() {
     std::cin.tie(nullptr);
     int t;
     std::cin >> t;
-    while(t--) {
+    while (t--) {
         solve();
     }
 }
