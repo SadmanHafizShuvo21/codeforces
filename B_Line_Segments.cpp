@@ -13,7 +13,7 @@ void solve() {
 
     std::sort(a.begin(), a.end());
     ll sum = std::accumulate(a.begin(), a.end(), 0LL);
-    ll mx = std::max(0LL, (a[n-1] - (sum - a[n-1])));
+    ll mx = std::max(0LL, (2 * a[n - 1] - sum));
 
     ll dist = (px - qx) * (px - qx) + (py - qy) * (py - qy);
     std::cout << (mx * mx <= dist && dist <= sum * sum ? "Yes" : "No") << '\n';
