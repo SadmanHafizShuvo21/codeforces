@@ -170,9 +170,32 @@
 //     solve();
 //     return 0;
 //
-#include<iostream>
-using namespace std;
-int main(){
-    cout<<"Yasin Arafat"<<endl;
+
+#include<bits/stdc++.h>
+using ll = long long ;
+
+void solve() {
+    ll n;
+    std::cin >> n;
+
+    ll cnt = 0;
+    ll x = std::sqrt(n);
+    for (int i = 1; i <= x; i++) {
+        cnt += (n / i - i);
+    }
+    
+    cnt *= 2;
+    std::cout << cnt + x << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
+    int t;
+    std::cin >> t;
+    while(t--) {
+        solve();
+    }
 }
 
