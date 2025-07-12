@@ -8,24 +8,9 @@ void solve() {
     for (ll i = 0; i < n; i++) {
         std::cin >> a[i];
     }
-    ll p = a[j - 1];
-    ll w = 0, sm = 0, st = 0;
-    for (ll x : a) {
-        if (x < p) {
-            w++;
-        } 
-        else if (x == p) {
-            sm++;
-        } 
-        else {
-            st++;
-        }
-    }
-    ll x = w + (sm - 1);
-    if (st > 0) {
-        x += (st - 1);
-    }
-    std::cout << (x >= n - k ? "YES" : "NO") << '\n';
+    
+    ll mx = *std::max_element(a.begin(), a.end());
+    std::cout << (((mx == a[j - 1]) || k > 1)? "YES" : "NO") << '\n';
 }
 int main() {
     std::ios::sync_with_stdio(false);
