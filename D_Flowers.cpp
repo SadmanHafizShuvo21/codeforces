@@ -8,11 +8,9 @@ void solve() {
     std::cin >> n >> k;
     
     std::vector<ll>dp(mx, 1), prefix(mx, 0);
-    for (int i = 1; i < mx; i++) {
+    for (int i = k; i < mx; i++) {
         dp[i] = dp[i - 1];
-        if (i >= k) {
-            dp[i] = (dp[i] + dp[i - k]) % mod;
-        }
+        dp[i] = (dp[i] + dp[i - k]) % mod;
     }
 
     for (int i = 1; i < mx; i++) {
@@ -22,12 +20,9 @@ void solve() {
     while (n--) {
         ll a, b;
         std::cin >> a >> b;
-        ll ans = prefix[b] - (a > 0 ? prefix[a - 1] : 0);
-        if (ans < 0) {
-            ans += mod;
-        }
+        ll ans = prefix[b] - prefix[a - 1];
 
-        std::cout << ans << "\n";
+        std::cout << (ans >= 0 ? ans : ans += mod) << "\n";
     }
 }
 
