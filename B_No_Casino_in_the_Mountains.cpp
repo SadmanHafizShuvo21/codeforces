@@ -4,19 +4,19 @@ using ll = long long;
 void solve() {
     int n, k;
     std::cin >> n >> k;
-    ll ans = 0, zeros = 0;
+    ll ans = 0, cnt = 0;
     for (int i = 0; i < n; i++) {
         int a;
         std::cin >> a;
         if (a == 0) {
-            zeros++;
+            cnt++;
         } 
         else {
-            ans += (zeros + 1) / (k + 1);
-            zeros = 0;
+            ans += (cnt + 1) / (k + 1);
+            cnt = 0;
         }
     }
-    ans += (zeros + 1) / (k + 1);
+    ans += (cnt + 1) / (k + 1);
 
     std::cout << ans << "\n";
 }

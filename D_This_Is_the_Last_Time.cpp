@@ -12,36 +12,16 @@ void solve() {
     std::vector<int> ord(n);
     std::iota(ord.begin(), ord.end(), 0);
     std::sort(ord.begin(), ord.end(), [&](int i, int j){
-        return l[i] < l[j];
+        return v[i] < v[j];
     });
 
-    std::priority_queue<std::pair<ll,int>> pq;
-    ll x = k;
-    int idx = 0;
-    while (true) {
-        while (idx < n && l[ord[idx]] <= x) {
-            pq.emplace(v[ord[idx]], ord[idx]);
-            idx++;
-        }
-        bool ok = false;
-        while (!pq.empty()) {
-            auto [rv, i] = pq.top();
-            if (r[i] < x || rv <= x) {
-                pq.pop();
-            } 
-            else {
-                x = rv;
-                pq.pop();
-                ok = true;
-                break;
-            }
-        }
-        if (!ok) {
-            break;
+    for (auto i : ord) {
+        if (l[i] <= k && k < v[i]) {
+            k = v[i];
         }
     }
 
-    std::cout << x << "\n";
+    std::cout << k << "\n";
 }
 
 int main() {

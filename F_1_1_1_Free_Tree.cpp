@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using ll = long long;
-
 const int mx = 450;
 
 void solve() {
@@ -16,8 +15,8 @@ void solve() {
     std::vector<ll> deg(n+1, 0);
     ll cost = 0;
 
-    for (int i = 0, u, v; i < n-1; i++) {
-        ll w;
+    for (int i = 0; i < n-1; i++) {
+        ll u, v, w;
         std::cin >> u >> v >> w;
         g[u].emplace_back(v, w);
         g[v].emplace_back(u, w);
@@ -35,15 +34,17 @@ void solve() {
         }
     }
 
-    std::vector<std::unordered_map<int,ll>> cnt(n+1);
-    for (int i = 1; i <= n; i++) if (hvy[i]) {
-        auto &mp = cnt[i];
-        for (auto &[u, w] : g[i]) {
-            mp[col[u]] += w;
+    std::vector<std::unordered_map<ll,ll>> cnt(n+1);
+    for (int i = 1; i <= n; i++) {
+        if (hvy[i]) {
+            auto &mp = cnt[i];
+            for (auto &[u, w] : g[i]) {
+                mp[col[u]] += w;
+            }
         }
     }
 
-    std::vector<std::vector<std::pair<int,ll>>> hnb(n+1);
+    std::vector<std::vector<std::pair<ll,ll>>> hnb(n+1);
     for (int i = 1; i <= n; i++) {
         for (auto &[u, w] : g[i]) {
             if (hvy[u]) {
@@ -71,24 +72,17 @@ void solve() {
         else {
             ll s1 = 0, s2 = 0;
             for (auto &[u, w] : g[v]) {
-                if (col[u] != oc) {
-                    s1 += w;
-                }
-                if (col[u] != c) {
-                    s2 += w;
-                }
+                if (col[u] != oc) s1 += w;
+                if (col[u] != c)  s2 += w;
             }
             d = s2 - s1;
         }
 
         cost += d;
-
         for (auto &[u, w] : hnb[v]) {
             auto &mp = cnt[u];
             mp[oc] -= w;
-            if (mp[oc] == 0) {
-                mp.erase(oc);
-            }
+            if (mp[oc] == 0) mp.erase(oc);
             mp[c] += w;
         }
 

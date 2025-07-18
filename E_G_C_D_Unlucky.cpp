@@ -6,15 +6,15 @@ void solve() {
     std::cin >> n;
     std::vector<ll> p(n), s(n);
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         std::cin >> p[i];
     }
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         std::cin >> s[i];
     }
 
     bool ok = true;
-    for (int i = 1; i < n; ++i) {
+    for (int i = 1; i < n; i++) {
         if (p[i] > p[i - 1] || (p[i - 1] % p[i] != 0)) {
             ok = false;
             break;
@@ -22,7 +22,7 @@ void solve() {
     }
 
     if (ok) {
-        for (int i = 0; i + 1 < n; ++i) {
+        for (int i = 0; i < n - 1; i++) {
             if (s[i] > s[i + 1] || (s[i + 1] % s[i] != 0)) {
                 ok = false;
                 break;
@@ -36,7 +36,7 @@ void solve() {
 
     if (ok) {
         ll g = p[n - 1]; 
-        for (int i = 0; i + 1 < n; ++i) {
+        for (int i = 0; i < n - 1; i++) {
             if (std::gcd(p[i], s[i + 1]) != g) {
                 ok = false;
                 break;
