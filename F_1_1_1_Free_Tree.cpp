@@ -1,100 +1,75 @@
 #include <bits/stdc++.h>
 using ll = long long;
-const int mx = 450;
 
 void solve() {
     int n, q;
     std::cin >> n >> q;
-
-    std::vector<int> col(n+1);
-    for (int i = 1; i <= n; i++) {
-        std::cin >> col[i];
+    
+    std::vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
     }
-
-    std::vector<std::vector<std::pair<int,ll>>> g(n+1);
-    std::vector<ll> deg(n+1, 0);
-    ll cost = 0;
-
-    for (int i = 0; i < n-1; i++) {
-        ll u, v, w;
-        std::cin >> u >> v >> w;
-        g[u].emplace_back(v, w);
-        g[v].emplace_back(u, w);
-        deg[u] += w;
-        deg[v] += w;
-        if (col[u] != col[v]) {
-            cost += w;
+    
+    std::vector<std::vector<std::pair<int, int>>> adj(n);
+    for (int i = 1; i < n; i++) {
+        int u, v, c;
+        std::cin >> u >> v >> c;
+        u--; v--;
+        adj[u].emplace_back(v, c);
+        adj[v].emplace_back(u, c);
+    }
+    
+    std::vector<int> p(n, -1), w(n);
+    std::vector<ll> sum(n);
+    std::vector<std::map<int, ll>> ch(n);
+    
+    ll ans = 0;
+    std::function<void(int)> dfs = [&](int x) {
+        for (auto [y, wi] : adj[x]) {
+            if (y == p[x]) continue;
+            p[y] = x;
+            w[y] = wi;
+            dfs(y);
         }
+    };
+    dfs(0);
+    
+    for (int i = 1; i < n; i++) {
+        if (a[i] != a[p[i]]) ans += w[i];
+        sum[p[i]] += w[i];
+        ch[p[i]][a[i]] += w[i];
     }
-
-    std::vector<char> hvy(n+1, 0);
-    for (int i = 1; i <= n; i++) {
-        if ((int)g[i].size() > mx) {
-            hvy[i] = 1;
-        }
-    }
-
-    std::vector<std::unordered_map<ll,ll>> cnt(n+1);
-    for (int i = 1; i <= n; i++) {
-        if (hvy[i]) {
-            auto &mp = cnt[i];
-            for (auto &[u, w] : g[i]) {
-                mp[col[u]] += w;
-            }
-        }
-    }
-
-    std::vector<std::vector<std::pair<ll,ll>>> hnb(n+1);
-    for (int i = 1; i <= n; i++) {
-        for (auto &[u, w] : g[i]) {
-            if (hvy[u]) {
-                hnb[i].emplace_back(u, w);
-            }
-        }
-    }
-
+    
     while (q--) {
-        int v, c;
-        std::cin >> v >> c;
-        int oc = col[v];
-        if (oc == c) {
-            std::cout << cost << "\n";
-            continue;
+        int v, x;
+        std::cin >> v >> x;
+        v--;
+        
+        ans -= sum[v];
+        if (ch[v].count(a[v])) ans += ch[v][a[v]];
+        
+        if (v) {
+            if (a[v] != a[p[v]]) ans -= w[v];
+            if ((ch[p[v]][a[v]] -= w[v]) == 0) ch[p[v]].erase(a[v]);
         }
-
-        ll d = 0;
-        if (hvy[v]) {
-            ll tot = deg[v];
-            ll s1 = cnt[v].count(oc) ? cnt[v][oc] : 0;
-            ll s2 = cnt[v].count(c)  ? cnt[v][c]  : 0;
-            d = (tot - s2) - (tot - s1);
-        } 
-        else {
-            ll s1 = 0, s2 = 0;
-            for (auto &[u, w] : g[v]) {
-                if (col[u] != oc) s1 += w;
-                if (col[u] != c)  s2 += w;
-            }
-            d = s2 - s1;
+        
+        a[v] = x;
+        
+        if (v) {
+            if (a[v] != a[p[v]]) ans += w[v];
+            ch[p[v]][a[v]] += w[v];
         }
-
-        cost += d;
-        for (auto &[u, w] : hnb[v]) {
-            auto &mp = cnt[u];
-            mp[oc] -= w;
-            if (mp[oc] == 0) mp.erase(oc);
-            mp[c] += w;
-        }
-
-        col[v] = c;
-        std::cout << cost << "\n";
+        
+        ans += sum[v];
+        if (ch[v].count(a[v])) ans -= ch[v][a[v]];
+        
+        std::cout << ans << "\n";
     }
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-
     int t;
     std::cin >> t;
     while (t--) {
