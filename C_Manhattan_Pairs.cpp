@@ -1,63 +1,39 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <climits>
+#include <bits/stdc++.h>
+using ll = long long;
 
-using namespace std;
+void solve() {
+    ll n;
+    std::cin >> n;
 
-struct Point {
-    int x, y, idx;
-};
+    std::vector<ll> a(n), b(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i] >> b[i];
+    }
+    
+    std::vector<int> order(n);
+    iota(order.begin(), order.end(), 0);
+    std::sort(order.begin(), order.end(), [&](int i, int j) {
+      return a[i] < a[j];
+    });
+    std::sort(order.begin(), order.begin() + n / 2, [&](int i, int j) {
+      return b[i] < b[j];
+    });
+    std::sort(order.begin() + n / 2, order.end(), [&](int i, int j) {
+      return b[i] < b[j];
+    });
+    
+    for (int i = 0; i < n / 2; i++) {
+      std::cout << order[i] + 1 << " " << order[n - 1 - i] + 1 << '\n';
+    }
+}
 
 int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
 
     int t;
-    cin >> t;
+    std::cin >> t;
     while (t--) {
-        int n;
-        cin >> n;
-        vector<Point> points(n);
-        for (int i = 0; i < n; ++i) {
-            cin >> points[i].x >> points[i].y;
-            points[i].idx = i + 1;
-        }
-
-        long long best_val = LLONG_MIN;
-        vector<pair<int, int>> best_pairs;
-
-        for (int s1 : {1, -1}) {
-            for (int s2 : {1, -1}) {
-                vector<pair<int, int>> arr;
-                for (const auto& p : points) {
-                    int t_val = s1 * p.x + s2 * p.y;
-                    arr.emplace_back(t_val, p.idx);
-                }
-                sort(arr.begin(), arr.end());
-                int half = n / 2;
-                long long sum_low = 0, sum_high = 0;
-                for (int i = 0; i < half; ++i) {
-                    sum_low += arr[i].first;
-                }
-                for (int i = half; i < n; ++i) {
-                    sum_high += arr[i].first;
-                }
-                long long total_val = sum_high - sum_low;
-                if (total_val > best_val) {
-                    best_val = total_val;
-                    best_pairs.clear();
-                    for (int i = 0; i < half; ++i) {
-                        best_pairs.emplace_back(arr[i].second, arr[n - 1 - i].second);
-                    }
-                }
-            }
-        }
-
-        for (const auto& p : best_pairs) {
-            cout << p.first << " " << p.second << "\n";
-        }
+        solve();
     }
-
-    return 0;
 }
