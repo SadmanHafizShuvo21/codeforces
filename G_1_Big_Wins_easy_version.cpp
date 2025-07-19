@@ -1,62 +1,107 @@
 #include <bits/stdc++.h>
-using namespace std;
 
+using i64 = long long;
+using u64 = unsigned long long;
+using u32 = unsigned;
+
+using u128 = unsigned __int128;
+using i128 = __int128;
+struct DSU {
+    std::vector<int> f, siz;
+    
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
+    
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        siz.assign(n, 1);
+    }
+    
+    int find(int x) {
+        while (x != f[x]) {
+            x = f[x] = f[f[x]];
+        }
+        return x;
+    }
+    
+    bool same(int x, int y) {
+        return find(x) == find(y);
+    }
+    
+    bool merge(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y) {
+            return false;
+        }
+        siz[x] += siz[y];
+        f[y] = x;
+        return true;
+    }
+    
+    int size(int x) {
+        return siz[find(x)];
+    }
+};
 void solve() {
     int n;
-    cin >> n;
-    vector<int> a(n);
+    std::cin >> n;
+    
+    std::vector<int> a(n);
     for (int i = 0; i < n; i++) {
-        cin >> a[i];
+        std::cin >> a[i];
+        a[i]--;
     }
-
+    
+    DSU fl(n + 1), fr(n + 1);
+    
+    std::vector<int> cnt(n), p(n);
+    for (int i = 0; i < n; i++) {
+        cnt[a[i]]++;
+    }
+    for (int i = 1; i < n; i++) {
+        cnt[i] += cnt[i - 1];
+    }
+    for (int i = 0; i < n; i++) {
+        p[--cnt[a[i]]] = i;
+    }
+    
     int ans = 0;
-    // Iterate over possible median values
-    for (int v = 1; v <= 100; v++) {
-        int less = 0;  // Count of elements < v
-        int leq = 0;   // Count of elements <= v
-        deque<int> dq; // Deque to maintain indices of elements in decreasing order
-        int l = 0;     // Left boundary of the window
-
-        for (int r = 0; r < n; r++) {
-            // Update counts based on the new element a[r]
-            if (a[r] < v) less++;
-            if (a[r] <= v) leq++;
-
-            // Maintain deque for minimum value
-            while (!dq.empty() && dq.front() < l) dq.pop_front();
-            while (!dq.empty() && a[dq.back()] > a[r]) dq.pop_back();
-            dq.push_back(r);
-
-            // Current window length
-            int k = r - l + 1;
-            // Median position: ceil((k+1)/2)
-            int p = (k + 1 + (k % 2 == 0)) / 2;
-
-            // Adjust window if v cannot be the median
-            while (l <= r && (less >= p || leq < p)) {
-                if (a[l] < v) less--;
-                if (a[l] <= v) leq--;
-                l++;
-                k = r - l + 1;
-                p = (k + 1 + (k % 2 == 0)) / 2;
-                while (!dq.empty() && dq.front() < l) dq.pop_front();
+    
+    int min = n;
+    
+    std::reverse(p.begin(), p.end());
+    for (auto i : p) {
+        for (int _ = 0; _ < 2; _++) {
+            int x = fl.find(i + 1);
+            if (x) {
+                fl.merge(x - 1, x);
+                min = std::min(min, a[x - 1]);
             }
-
-            // If the window is valid, update the answer
-            if (l <= r) {
-                int min_val = a[dq.front()];
-                ans = max(ans, v - min_val);
+            
+            x = fr.find(i);
+            if (x < n) {
+                fr.merge(x + 1, x);
+                min = std::min(min, a[x]);
             }
         }
+        ans = std::max(ans, a[i] - min);
     }
-    cout << ans << "\n";
+    
+    std::cout << ans << "\n";
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
     int t;
-    cin >> t;
-    while (t--) solve();
-    return 0;
+    std::cin >> t;
+    
+    while (t--) {
+        solve();
+    }
 }

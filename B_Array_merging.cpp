@@ -1,23 +1,42 @@
 #include <bits/stdc++.h>
 using ll = long long;
 
+std::vector<ll> check (ll n, std::vector<ll> v) {
+    std::vector<ll> fa(2 * n);
+    ll len = 0;
+    for (int i = 0; i < n; i++) {
+        if (i > 0 && v[i] != v[i - 1]) {
+            len = 0;
+        }
+        len++;
+        fa[v[i]] = std::max(fa[v[i]], len);
+    }
+    return fa;
+}
+
 void solve() {
     int n;
     std::cin >> n;
 
-    std::map<int, int> mp;
-    for (int i = 0; i < 2*n; i++) {
-        int x;
-        std::cin >> x;
-        mp[x]++;
+    std::vector<ll> a(n), b(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
+        a[i]--;
     }
 
-    int cnt = 0;
-    for (auto i = mp.begin(); i != mp.end(); i++) {
-        cnt = std::max(cnt, i->second);
+    for(int i = 0; i < n; i++) {
+        std::cin >> b[i];
+        b[i]--;
     }
 
-    std::cout << cnt << "\n";
+    std::vector<ll> fa = check(n, a);
+    std::vector<ll> fb = check(n, b);
+
+    ll ans = 0;
+    for (int i = 0; i < 2 * n; i++) {
+        ans = std::max(ans, fa[i] + fb[i]);
+    }
+    std::cout << ans << "\n";
 }
 
 int main() {
