@@ -18,10 +18,9 @@ int main(){
     std::cin.tie(nullptr);
     int tesecase;
     std::cin>>tesecase;
-    while(tesecase--)
-    solve();
-
-    return 0;
+    while(tesecase--) {
+        solve();
+    }
 }
 
 
