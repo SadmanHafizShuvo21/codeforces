@@ -14,11 +14,9 @@ void solve() {
     std::sort(h.begin(), h.end());
     h.erase(std::unique(h.begin(), h.end()));
     for(int i = 0; i < h.size(); i++) {
-        if(h[i] >= x) {
-            if (h[i + 1] - h[i] > x){
-                std::cout << "NO" << "\n";
-                return;
-            }
+        if(h[i] >= x && h[i + 1] - h[i] > x) {
+            std::cout << "NO" << "\n";
+            return;
         } 
     }
 
