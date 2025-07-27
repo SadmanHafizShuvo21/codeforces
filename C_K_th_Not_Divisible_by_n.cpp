@@ -4,7 +4,7 @@ using ll = long long;
 void solve() {
     ll n,k;
     std::cin >> n >> k;
-    std::cout<<k+(k-1)/(n-1)<<"\n";
+    std::cout<<k + (k - 1) / (n - 1) <<"\n";
 }
 
 int main() {

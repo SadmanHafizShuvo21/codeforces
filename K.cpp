@@ -1,44 +1,91 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include<bits/stdc++.h>
 using ll = long long;
+std::vector<bool> prime(1e5 + 7, true);
 
-void solve(){
-    int n;
-    cin >> n;
-    vector<int>a(n+1), b(n+1);
-    for(int i=1;i<=n;i++) cin >> a[i];
-    // build M: ones at even positions
-    for(int i=1;i<=n;i++){
-        b[i] = (i%2==0);
+ll countDivisor(ll n) {
+    ll sq = std::sqrt(n);
+    ll cnt = 0;
+    for(int i = 1; i <= sq; i++) {
+        if (n % i == 0) {
+            cnt++;
+        }
     }
-    // if M != a, done
-    if(!equal(a.begin()+1, a.begin()+n+1, b.begin()+1)){
-        for(int i=1;i<=n;i++) cout << b[i] << ' ';
-        cout << "\n";
-        return;
-    }
-    // a == M
-    if(n==1){
-        cout << -1 << "\n";
-        return;
-    }
-    if(n==2){
-        cout << "0 0\n";
-        return;
-    }
-    // n>=3: move the 1 from pos 2 → pos 3
-    b[2] = 0;
-    b[3] = 1;
-    for(int i=1;i<=n;i++) cout << b[i] << ' ';
-    cout << "\n";
+ 
+    ll ans = 2 * cnt - (sq * sq == n);
+    return ans;
 }
 
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+void sieve(int n) {
+    for (int p = 2; p * p <= n; p++) {
+        if (prime[p] == true) {
+            for (int i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+}
 
-    int T;
-    cin >> T;
-    while(T--) solve();
-    return 0;
+int binarySearch(int arr[], int size, int target) {
+    int left = 0, right = size - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2; 
+
+        if (arr[mid] == target) {
+            return mid; 
+        } 
+        else if (arr[mid] < target) {
+            left = mid + 1; 
+        } 
+        else {
+            right = mid - 1; 
+        }
+    }
+    return -1; 
+}
+
+void solve() {
+    ll n;
+    std::cin >> n;
+    std::vector<ll> a(n);
+    
+    for(int i = 0; i < n; i++) {
+        std::cin >> a[i];
+    }
+    
+    if(n == 1) {
+        std::cout << -1 << "\n";
+        return;
+    }
+
+    if(n == 2) {
+        if(a[1] == 1) {
+            std::cout << "0 0" << "\n";
+        }
+        else{
+            std::cout << "0 1" << "\n";
+        }
+        return;
+    }
+
+    std::vector<ll> b(n, 0);
+    for (int i = 1; i < n; i += 2) {
+        b[i] = 1;
+    }
+    
+    if(a == b) {
+        std::swap(b[1], b[2]);
+    }
+    for (int i = 0; i < n; i++) {
+        std::cout << b[i] << " \n"[i == n - 1];
+    }
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    int t;
+    std::cin>>t;
+    while (t--) {
+        solve();
+    }
 }

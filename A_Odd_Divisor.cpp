@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
-using ll = long long;
+using ll = unsigned long long;
 std::vector<bool> prime(1e5 + 7, true);
+std::vector<ll> tpow(31);
 
 ll countDivisor(ll n) {
     ll sq = std::sqrt(n);
@@ -32,9 +33,11 @@ int binarySearch(int arr[], int size, int target) {
 
         if (arr[mid] == target) {
             return mid; 
-        } else if (arr[mid] < target) {
+        } 
+        else if (arr[mid] < target) {
             left = mid + 1; 
-        } else {
+        } 
+        else {
             right = mid - 1; 
         }
     }
@@ -42,24 +45,16 @@ int binarySearch(int arr[], int size, int target) {
 }
 
 void solve() {
-    ll n, x;
-    std::cin >> n >> x;
-    std::vector<ll> a(n);
-    
-    for(int i = 0; i < n; i++) {
-        std::cin >> a[i];
-    }
+    ll n;
+    std::cin >> n;
 
-    ll ans = 0;
-    for(int i = x ; i < n; i++) {
-        ans |= a[i];
-    }
-    std::cout << ans << "\n";
+    std::cout << (n & (n - 1) ? "YES" : "NO") << "\n";
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
+
     int t;
     std::cin>>t;
     while (t--) {

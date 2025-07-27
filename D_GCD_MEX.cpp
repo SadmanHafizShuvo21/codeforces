@@ -51,7 +51,8 @@ void solve() {
     ll x = 1, g = 0;
     for(int i = 1; i < n; i++){
         std::cout << i << " ";
-        x = std::lcm(x, (ll)i);
+        g = std::gcd(x, (ll)i);
+        x = (x / g) * i;
     }
     std::cout << x << "\n";
 }
