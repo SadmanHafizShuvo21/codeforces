@@ -1,21 +1,23 @@
-//11 July 2024
 #include<bits/stdc++.h>
 using ll = long long;
+
 void solve(){
-    int n,sum=0;
+    ll n;
     std::cin>>n;
-    std::vector<int>arr(n),pfs(n);
-    for(int i=0;i<n;i++){
-        std::cin>>arr[i];
-        sum+=arr[i];
-        pfs[i]=sum;
+    std::vector<int>a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
     }
-    int q;
-    std::cin>>q;
+    
+    std::vector<ll>pref(n + 1, 0);
+    std::partial_sum(a.begin(), a.end(), pref.begin() + 1);
+
+    ll q;
+    std::cin >> q;
     while(q--){
-        int x;
-        std::cin>>x;
-        std::cout<<std::lower_bound(pfs.begin(),pfs.end(),x)-pfs.begin()+1<<"\n";
+        ll x;
+        std::cin >> x;
+        std::cout<<std::lower_bound(pref.begin(), pref.end(), x) - pref.begin() << "\n";
     }
 }
 int main(){
@@ -23,7 +25,6 @@ int main(){
     std::cin.tie(nullptr);
     
     solve();
-    return 0;
 }
 
 

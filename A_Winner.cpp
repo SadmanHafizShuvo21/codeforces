@@ -5,14 +5,14 @@ void solve() {
     ll n;
     std::cin >> n;
     std::vector<std::pair<std::string, ll>> pair(n);
-    std::map<std::string, int> val;
+    std::map<std::string, ll> val;
 
     for (int i = 0; i < n; i++) {
         std::cin >> pair[i].first >> pair[i].second;
         val[pair[i].first] += pair[i].second;
     }
 
-    int mx = INT_MIN;
+    ll mx = -1e18;
     for (auto &[a , s] : val) {
         mx = std::max(mx, s);
     }

@@ -13,7 +13,7 @@ void solve() {
     ll sum = std::accumulate(a.begin(), a.end(), 0LL);
     ll z = std::count(a.begin(), a.end(), 0);
 
-    std::cout << (z > 0 ? (sum + 1) : sum) << "\n";
+    std::cout << sum + z << "\n";
     
 }
 

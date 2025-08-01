@@ -11,9 +11,6 @@ void solve() {
 
     std::sort(a.begin(), a.end());
 
-    for (int i = 0; i < n; i++) {
-        std::cout << a[i] << " \n"[i == n - 1];
-    }
     std::vector<ll> b;
     ll l = 0, r = n - 1;
     for (int i = 0; i < n; i++) {
