@@ -1,0 +1,1 @@
+{"name":"Local: C_Good_Sequence","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\codeforce\\C_Good_Sequence.cpp","tests":[{"id":1755015250899,"input":"2\n2\n1 2\n4\n1 4 2 1","output":"0 \n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\codeforce\\C_Good_Sequence.cpp","group":"local","local":true}
