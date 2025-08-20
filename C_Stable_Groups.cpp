@@ -16,7 +16,7 @@ void solve() {
 
     ll ans = n;
     std::sort(a.begin(), a.end());
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n - 1 && k >= a[i]; i++) {
         if (k >= a[i]) {
             k -= a[i];
             ans--;
