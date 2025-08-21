@@ -4,14 +4,8 @@ using ll = long long;
 void solve() {
     ll n;
     std::cin >> n;
-    ll sum = 0, r = n;
-    while (r) {
-        sum += r % 3;
-        r /= 3;
-    }
-
+    ll r = n;
     std::vector<ll> a;
-    r = n;
     while (r) {
         a.push_back(r % 3);
         r /= 3;
