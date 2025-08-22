@@ -8,9 +8,11 @@ void solve() {
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
     }
+
     for (int i = 0; i < m; i++) {
         std::cin >> b[i];
     }
+
     std::sort(a.rbegin(), a.rend());
     std::sort(b.rbegin(), b.rend());
     
@@ -31,6 +33,7 @@ void solve() {
         auto ga = [&](ll idx) -> ll { 
             return idx >= n ? 0 : a[idx]; 
         };
+        
         auto gb = [&](ll idx) -> ll { 
             return idx >= m ? 0 : b[idx]; 
         };

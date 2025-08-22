@@ -44,22 +44,17 @@ void solve() {
         }
     }
 
-    ll t = sum;
+    ll t = sum, save = 0;
     std::vector<ll> b = a;
-    ll save = 0;
     for (ll i = l - 1; i > 0; i--) {
         if (t + 2 * b[i] <= k) {
             save += b[i] * pref[i - 1];
             t += 2 * b[i];
             b[i - 1] += 3 * b[i];
-            b[i] = 0;
         } 
         else {
             ll num = (k - t) / 2;
             save += num * pref[i - 1];
-            t += 2 * num;
-            b[i] -= num;
-            b[i - 1] += 3 * num;
             break;
         }
     }
@@ -70,9 +65,9 @@ int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    int tc;
-    std::cin >> tc;
-    while (tc--) {
+    int t;
+    std::cin >> t;
+    while (t--) {
         solve();
     }
 }
