@@ -28,9 +28,8 @@ void solve() {
             cnt++;
         }
     }
-    
-    ll ans = mod_pow(2, n - cnt);
-    std::cout << ans << '\n';
+
+    std::cout << mod_pow(2, n - cnt) << '\n';
 }
 
 int main() {

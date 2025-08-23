@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 using ll = long long;
-using ld = long double;
-const int MOD = 1e9 + 7;
 
 ll And(ll l, ll r) {
     ll cnt = 0;
@@ -44,10 +42,8 @@ ll Xor(ll l, ll r) {
 void solve() {
     ll l, r;
     std::cin >> l >> r;
-    ll a = And(l, r);
-    ll o = Or(l, r);
-    ll x = Xor(l, r);
-    std::cout << a << " " << o << " " << x << "\n";
+    
+    std::cout << And(l, r) << " " << Or(l, r) << " " << Xor(l, r) << "\n";
 }
 
 int main() {

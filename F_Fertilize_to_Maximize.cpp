@@ -17,9 +17,9 @@ void solve() {
     ld sum = 0.0;
     for (int i = 0; i < n; i++) {
         ll x = t[i] - s[i] + 1;
-        sum += 1.0L / (ld)x;
+        sum += 1.0L / x;
     }
-    std::cout << std::fixed << std::setprecision(10) << sum / (ld)n << "\n";
+    std::cout << std::fixed << std::setprecision(10) << sum / n << "\n";
 }
 
 int main() {

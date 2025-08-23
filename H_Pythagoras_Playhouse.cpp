@@ -24,10 +24,7 @@ void solve() {
                 continue;
             }
             ll x = i * i + j * j;       
-            if (x > d) {
-                continue;
-            }
-            ans += d / x;               
+            ans += std::max(0LL, d / x);               
         }
     }
 

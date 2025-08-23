@@ -10,14 +10,8 @@ void solve() {
 
     ld s = sinl(theta * PI / 360.0L); 
     ld area = 2.0L * r * s;
-    ld val = l * l - area * area;
 
-    if (val < 0) {
-        val = 0; 
-    }
-
-    ld d = sqrtl(val);
-    std::cout << std::fixed << std::setprecision(6) << (ld)d << '\n';
+    std::cout << std::fixed << std::setprecision(6) << (ld)sqrtl(l * l - area * area) << '\n';
 }
 
 int main() {
