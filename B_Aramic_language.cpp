@@ -9,7 +9,7 @@ void solve() {
         std::string s;
         std::cin >> s;
         std::set<char> st(s.begin(), s.end());
-        std::string x (st.begin(), st.end());
+        std::string x(st.begin(), st.end());
         str.insert(x);
     }
     std::cout << str.size() << "\n";
@@ -18,5 +18,6 @@ void solve() {
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
+
     solve();
 }
