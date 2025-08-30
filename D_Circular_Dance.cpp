@@ -1,10 +1,25 @@
 #include <bits/stdc++.h>
 using ll = long long;
 
+std::vector<ll> Hamiltonian_path(ll n, std::vector<std::array<ll, 2>> &a) {
+    ll x = 0; 
+    std::vector<ll> p = {0};
+    for (ll i = 1; i < n; i++) {
+        auto [y, z] = a[x];
+        if (a[y][0] == z || a[y][1] == z) {
+            x = y;
+        } else {
+            x = z;
+        }
+        p.push_back(x);
+    }
+    return p;
+}
+
 void solve() {
     ll n;
     std::cin >> n;
-    std::vector<std::array<ll,2>> a(n);
+    std::vector<std::array<ll, 2>> a(n);
     for (ll i = 0; i < n; i++) {
         std::cin >> a[i][0] >> a[i][1];
         a[i][0]--; 
@@ -15,19 +30,7 @@ void solve() {
         return;
     }
 
-    ll x = 0;
-    std::vector<ll> p = {0};
-    for (ll i = 1; i < n; i++) {
-        auto [y, z] = a[x];
-        if (a[y][0] == z || a[y][1] == z) {
-            x = y;
-        }
-        else {
-            x = z;
-        }
-        p.push_back(x);
-    }
-    
+    std::vector<ll> p = Hamiltonian_path(n, a);
     for (ll i = 0; i < n; i++) {
         std::cout << p[i] + 1 << " \n"[i == n - 1];
     }
