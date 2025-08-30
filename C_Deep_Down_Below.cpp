@@ -25,11 +25,10 @@ void solve() {
     ll cur = pr[0].second;
     ll ans = pr[0].first;
     for (int i = 1; i < n; i++) {
-        if (pr[i].second > cur) {
-            ans = std::max(ans, pr[i].first - cur);
-            cur = pr[i].second;
-        }
+        ans = std::max(ans, pr[i].first - cur);
+        cur += pr[i].second;
     }
+    
     std::cout << ans + 1 << "\n";
 }
 

@@ -10,8 +10,8 @@ void solve() {
     for (int i = 0; i < n; i++) {
         ll x;
         std::cin >> x;
-        ans += mp[x - i];
-        mp[x - i]++;
+        x -= i;
+        ans += mp[x]++;
     }
 
     std::cout << ans << "\n";
