@@ -11,9 +11,7 @@ void solve() {
     std::cin >> n;
 
     ll x = n / 2;
-    ll sq = sqrt(x);
-    ll nsq = std::sqrt(n);
-    std::cout << ((n % 4 == 0 && issquare(n / 4)) || (n % 2 == 0 && issquare(n / 2)) ? "YES" : "NO") << "\n";
+    std::cout << ((n % 4 == 0 && issquare(x / 2)) || (n % 2 == 0 && issquare(x)) ? "YES" : "NO") << "\n";
 }
 
 int main() {
