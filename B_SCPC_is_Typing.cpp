@@ -5,20 +5,15 @@ using llx = __int128;
 const lld e = 1e-12L;
 
 void solve() {
-    ll n, x;
-    std::cin >> n >> x;
+    ll n;
+    std::cin >> n;
     std::vector<ll> a(n);
     for (ll i = 0; i < n; i++) {
         std::cin >> a[i];
     }
-    std::sort(a.begin(), a.end(), std::greater<ll>());
 
-    lld sum = 0;
-    for (int i = 0; i < n; i++) {
-        sum += (lld)a[i] / (i + 1);
-    }
-    std::cout.setf(std::ios::fixed);
-    std::cout << std::fixed << std::setprecision(12) << (sum >= x ? "YES" : "NO") << "\n";
+    std::sort(a.begin(), a.end());
+    std::cout << a[n / 2] << "\n";
 }
 
 int main() {

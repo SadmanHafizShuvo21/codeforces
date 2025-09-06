@@ -25,10 +25,9 @@ void solve() {
 
     std::map<ll, ll> mp;
     ll ans = -1;
-
     for (ll i = 0; i < n; i++) {
         std::map<ll, ll> gcd;
-        gcd[a[i]] = 1;
+        gcd[a[i]]++;
 
         for (auto &p : mp) {
             ll g = std::__gcd(p.first, a[i]);
