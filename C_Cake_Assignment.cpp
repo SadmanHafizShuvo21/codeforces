@@ -8,11 +8,6 @@ void solve() {
     std::cin >> k >> x;
 
     ll mx = (llx)1 << (k + 1);
-    if (2 * x == mx) {
-        std::cout << 0 << "\n";
-        return;
-    }
-
     std::vector<ll> a;
     while(2 * x != mx) {
         if (2 * x < mx) {
