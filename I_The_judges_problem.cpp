@@ -23,6 +23,9 @@ void solve() {
         return a.second > b.second;
     });
 
+    // for (auto &p : v) {
+    //     std::cout << p.first << " " << p.second << "\n";
+    // }
     std::cout << v[0].first << "\n";
 }
 
