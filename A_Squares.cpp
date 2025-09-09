@@ -2,7 +2,7 @@
 using ll = long long;
 using lld = double;
 using llx = __int128;
-const ll inf = 1e9 + 7;
+const ll inf = 1e9;
 
 void solve() {
     ll n;
@@ -12,15 +12,12 @@ void solve() {
     while(n--) {
         ll x1, y1, x2, y2;
         std::cin >> x1 >> y1 >> x2 >> y2;
-
-        lx = std::max(x1, lx);
-        ly = std::max(y1, ly);
-        hx = std::min(x2, hx);
-        hy = std::min(y2, hy);
+        hx = std::max(hx, x2);
+        hy = std::max(hy, y2);
     }
 
-    ll add = std::min(hx - lx, hy - ly);
-    std::cout << lx << " " << ly << " " << lx + add << " " << ly + add << "\n";
+    ll add = std::max({hx, hy, 1LL}) + inf;
+    std::cout << 0LL << " " << 0LL << " " << add << " " << add << "\n";
 }
 
 int main() {
