@@ -6,8 +6,8 @@ using llx = __int128;
 void solve() {
     lld r, x, y, x1, y1;
     std::cin >> r >> x >> y >> x1 >> y1;
-    lld dist = sqrtl((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
-    std::cout << (ll)std::ceil(dist / (2 * r)) << "\n";
+    lld e = sqrtl((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
+    std::cout << (ll)std::ceil(e / (2 * r)) << "\n";
 }
 
 int main() {

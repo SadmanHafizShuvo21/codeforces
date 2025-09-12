@@ -7,16 +7,20 @@ ll n, m, timer;
 bool hasBridge;
 
 void dfs(int v, int p) {
-    
     tin[v] = low[v] = timer++;
     for (int to : g[v]) {
-        if (to == p) continue;
+        if (to == p) {
+            continue;
+        }
         if (!tin[to]) {
             ans.push_back({v, to});
             dfs(to, v);
             low[v] = std::min(low[v], low[to]);
-            if (low[to] > tin[v]) hasBridge = true;
-        } else if (tin[to] < tin[v]) {
+            if (low[to] > tin[v]) {
+                hasBridge = true;
+            }
+        } 
+        else if (tin[to] < tin[v]) {
             ans.push_back({v, to});
             low[v] = std::min(low[v], tin[to]);
         }
