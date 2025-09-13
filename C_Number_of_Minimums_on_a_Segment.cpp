@@ -28,7 +28,7 @@ struct SegTree {
         ll m = (l + r) / 2;
         build(a, v * 2, l, m);
         build(a, v * 2 + 1, m + 1, r);
-        
+
         st[v] = combine(st[v * 2], st[v * 2 + 1]);
         // st[v] = std::min(st[v * 2] , st[v * 2 + 1]);
         // st[v] = std::max(st[v * 2] , st[v * 2 + 1]);
