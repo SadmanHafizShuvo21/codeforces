@@ -2,6 +2,7 @@
 using ll = long long;
 using llx = __int128;
 
+
 void solve() {
     ll n;
     std::cin >> n;

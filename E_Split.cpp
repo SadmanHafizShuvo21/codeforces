@@ -28,7 +28,6 @@ void solve() {
 
     ll l = 0, r = 0, ans = 0;
     std::vector<int> cur(n + 1, 0);
-    
     while (l < n) {
         while (r < n && cur[a[r]] + 1 <= q[a[r]]) {
             cur[a[r]]++;
@@ -37,8 +36,6 @@ void solve() {
         ans += (r - l);
         cur[a[l]]--;
         l++;
-
-        r = std::max(r, l);
     }
 
     std::cout << ans << '\n';

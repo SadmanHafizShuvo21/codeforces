@@ -13,13 +13,7 @@ void solve() {
     ll ans = 0, pt = 0, ps = 0;
     for (int i = 0; i < n; i++) {
         ll d = a[i] - pt;
-        int p = (b[i] != ps);
-        if (d % 2 == p) {
-            ans += d;
-        }
-        else {
-            ans += d - 1;
-        }
+        ans += (d % 2 != (b[i] != ps) ? d - 1 : d);
 
         pt = a[i];
         ps = b[i];
