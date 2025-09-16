@@ -6,17 +6,17 @@ void solve() {
     std::cin >> n;
     std::vector<int> a(n + 1), pos(n + 1, -1);
 
-    ll z = 0;
     for (int i = 1; i <= n; i++) {
         std::cin >> a[i];
-        if (a[i] == 0) {
-            z++;
-        }
-        else {
+        if (a[i] != 0) {
             pos[a[i]] = i;
         }
     }
-    int l = 0, r = 0;
+
+    ll z = std::count(a.begin() + 1, a.end(), 0);
+    // std::cout << z << "\n";
+    
+    ll l = 0, r = 0;
     for (int i = 1; i <= n; i++) {
         if (a[i] > 0 && a[i] != i) { 
             l = i; 
