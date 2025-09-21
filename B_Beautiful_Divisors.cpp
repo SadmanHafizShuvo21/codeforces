@@ -1,4 +1,3 @@
-//18 May 2024
 #include<bits/stdc++.h>
 using ll = long long;
 
@@ -6,17 +5,19 @@ void solve(){
     ll n;
     std::cin >> n;
 
-    ll a = 3;
-    for (int i = 0; i < n; i++) {
-        ll x;
-        std::cin >> x;
-        if (x == a) {
-            std::cout << "NO" << "\n";
+    ll ans = 1;
+    for (int i = 1; i <= 10; i++) {
+        ll v = ((1 << i) - 1) << (i - 1);
+        
+        if (v > n) {
+            std::cout << ans << "\n";
             return;
         }
-        a ^= x;
+
+        if (n % v == 0) {
+            ans = v;
+        }
     }
-    std::cout << "YES" << "\n";
 }
 int main(){
     std::ios::sync_with_stdio(false);
