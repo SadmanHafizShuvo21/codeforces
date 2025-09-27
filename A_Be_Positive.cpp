@@ -4,15 +4,13 @@ using ll = long long;
 void solve(){
     ll n;
     std::cin >> n;
-    std::map<ll, ll> mp;
+    std::vector<ll> a(n);
     for (int i = 0; i < n; i++) {
-        ll a;
-        std::cin >> a;
-        mp[a]++;
+        std::cin >> a[i];
     }
 
-    ll ans = mp[0] + 2 * (mp[-1] % 2);
-
+    ll ans = std::count(a.begin(),a.end(), 0);
+    ans += 2 * (std::count(a.begin(),a.end(), -1) % 2);
     std::cout << ans << "\n";
 }
 int main(){

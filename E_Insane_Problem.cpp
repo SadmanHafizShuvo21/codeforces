@@ -2,18 +2,16 @@
 using ll = long long;
 
 void solve(){
-    ll n;
-    std::cin >> n;
-    std::vector<ll> a(n);
-    for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
-    }
-    std::sort(a.begin(), a.end());
-
+    ll k, l1, r1, l2, r2;
+    std::cin >> k >> l1 >> r1 >> l2 >> r2;
+    
     ll ans = 0;
-    for (int i = 1; i < n; i += 2) {
-        ans = std::max(ans, a[i] - a[i - 1]);   
+    for (ll i = 1; i <= r2; i *= k) {
+        ll r = r2 / i;
+        ll l = (l2 + i - 1) / i;
+        ans += std::max(0LL , std::min(r1, r) - std::max(l1, l) + 1);
     }
+    
     std::cout << ans << "\n";
 }
 int main(){
