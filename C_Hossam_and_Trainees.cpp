@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+using ll = long long;
+const int N = 1e6 + 7;
+std::vector<int> primes;
+
+void sieve() {
+    std::vector<bool> is_prime(N + 1, true);
+    is_prime[0] = is_prime[1] = false;
+    for (int i = 2; i * i <= N; i++) {
+        if (is_prime[i]) {
+            for (int j = i * i; j <= N; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+    for (int i = 2; i <= N; i++) {
+        if (is_prime[i]) {
+            primes.push_back(i);
+        }
+    }
+}
+
+void solve() {
+    ll n;
+    std::cin >> n;
+    std::vector<ll> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
+    }
+
+    std::set<ll> s;
+    for (int i = 0; i < n; i++) {
+        for (ll p : primes) {
+            if (p * p > a[i]) {
+                break;
+            }
+            if (a[i] % p == 0) {
+                if (s.count(p)) {
+                    std::cout << "YES" << "\n";
+                    return;
+                }
+                s.insert(p);
+                while (a[i] % p == 0) {
+                    a[i] /= p;
+                }
+            }
+        }
+        if (a[i] > 1) {
+            if (s.count(a[i])) {
+                std::cout << "YES" << "\n";
+                return;
+            }
+            s.insert(a[i]);
+        }
+    }
+    std::cout << "NO" << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    sieve();
+    int t;
+    std::cin >> t;
+    while (t--) {
+        solve();
+    }
+}
