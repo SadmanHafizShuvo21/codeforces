@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using ll = long long;
-const int N = 1e6 + 7;
+const int N = std::sqrt(1e9);
 std::vector<int> primes;
 
 void sieve() {
@@ -28,29 +28,32 @@ void solve() {
         std::cin >> a[i];
     }
 
-    std::set<ll> s;
+    static std::set<ll> s; 
+    s.clear(); 
+
     for (int i = 0; i < n; i++) {
+        ll x = a[i];
         for (ll p : primes) {
-            if (p * p > a[i]) {
+            if (p * p > x) { 
                 break;
             }
-            if (a[i] % p == 0) {
+            if (x % p == 0) {
                 if (s.count(p)) {
                     std::cout << "YES" << "\n";
                     return;
                 }
                 s.insert(p);
-                while (a[i] % p == 0) {
-                    a[i] /= p;
+                while (x % p == 0) {
+                    x /= p;
                 }
             }
         }
-        if (a[i] > 1) {
-            if (s.count(a[i])) {
+        if (x > 1) { 
+            if (s.count(x)) {
                 std::cout << "YES" << "\n";
                 return;
             }
-            s.insert(a[i]);
+            s.insert(x);
         }
     }
     std::cout << "NO" << "\n";
