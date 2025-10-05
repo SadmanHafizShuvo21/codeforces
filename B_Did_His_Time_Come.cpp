@@ -5,21 +5,18 @@ void solve() {
     ll a, b, c;
     std::cin >> a >> b >> c;
     
-    std::vector<ll> v(a);
+    std::vector<ll> v(a), cur(a);
     for (int i = 0; i < a; i++) {
         std::cin >> v[i];
     }
-    
-    // forward elixir at start of each timestep
-    std::vector<ll> cur(a);
+
     ll p = b;
     for (int i = 0; i < a; i++) {
         cur[i] = p;
         p -= v[i];
         p = std::min(b, p + 1);
     }
-    
-    // backward minimal requirement
+
     std::vector<ll> need(a + 1, 0);
     for (int i = a - 1; i >= 0; i--) {
         need[i] = std::max(v[i], need[i + 1] + v[i] - 1);
