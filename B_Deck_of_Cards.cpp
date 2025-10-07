@@ -12,7 +12,7 @@ void solve() {
         mp[ch - '0']++;
     }
 
-    std::string str(n, 0);
+    std::string str(n, '?');
     for (int i = 0; i < n; i++) {
         if (i < mp[0] || i >= n - mp[1] || n == k) {
             str[i] = '-';
@@ -20,9 +20,6 @@ void solve() {
         else if (i >= mp[0] + mp[2] && i < n - mp[1] - mp[2]) {
             str[i] = '+';
         } 
-        else{
-            str[i] = '?';
-        }
     }
     std::cout << str << "\n";
 }
