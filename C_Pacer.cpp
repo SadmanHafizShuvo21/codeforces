@@ -4,21 +4,14 @@ using ll = long long;
 void solve() {
     ll n, m;
     std::cin >> n >> m;
-    std::vector<ll> a(n),b(n);
-    
-    for (int i = 0; i < n; i++) {
-        std::cin >> a[i] >> b[i];
-    }
 
-    ll ans = 0, pt = 0, ps = 0;
+    ll ans = m, x = 0;
     for (int i = 0; i < n; i++) {
-        ll d = a[i] - pt;
-        ans += (d % 2 != (b[i] != ps) ? d - 1 : d);
-
-        pt = a[i];
-        ps = b[i];
+        ll a, b;
+        std::cin >> a >> b;
+        ans -= ((a + b) % 2 != x);
+        x = (a + b) % 2;
     }
-    ans += (m - pt);
     std::cout << ans << '\n';
 }
 
