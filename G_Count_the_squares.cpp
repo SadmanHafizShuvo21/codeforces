@@ -6,12 +6,18 @@ void solve() {
     ll n;
     std::cin >> n;
 
-    std::vector<ll> a(n);
+    std::map<ll, ll> mp;
     for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
+        ll x;
+        std::cin >> x;
+        mp[x]++;
     }
 
-    std::cout << (!((a[0] + a[1]) % 2 != 0 && n == 2) ? "YES" : "NO") << "\n";
+    ll ans = 0;
+    for (auto [x, c] : mp) {
+        ans += c * (c - 1) * (c - 2) / 6;  
+    }
+    std::cout << ans << "\n";
 }
 
 int main() {
