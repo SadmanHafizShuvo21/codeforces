@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>
 using ll = long long;
 const ll N = 2e5 + 5;
-
+    
 void solve() {
     ll n;
     std::cin >> n;
-
     std::map<ll, ll> mp;
     for (int i = 0; i < n; i++) {
         ll x;
@@ -15,8 +14,10 @@ void solve() {
 
     ll ans = 0;
     for (auto [x, c] : mp) {
-        ans += c * (c - 1) * (c - 2) / 6;  
+        ans += (c * (c - 1) * (c - 2)) / 6;
+        ans += (c * (c - 1) / 2 * mp[2 * x]);
     }
+
     std::cout << ans << "\n";
 }
 
