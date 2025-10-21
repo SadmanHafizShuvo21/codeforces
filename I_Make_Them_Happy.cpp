@@ -4,30 +4,21 @@ using ll = long long;
 void solve() {
     ll n, x;
     std::cin >> n >> x;
-    std::vector<ll> freq(x);
+    std::vector<ll> a(n);
     for (int i = 0; i < n; i++) {
-        ll a;
-        std::cin >> a;
-        ll r = a % x;
-        freq[r]++;
+        std::cin >> a[i];
     }
 
     ll ans = 0;
-    for (int i = 0; i < x; i++) {
-        ll sq = (i * i) % x;
-        if (sq != 0) {
-            continue;
+    std::vector<ll> cnt(x);
+    for (int i = 0; i < n; i++) {
+        ll sum = (x - (a[i] % x)) % x;
+        if(sum * a[i] % x == 0){
+            ans += cnt[sum];
         }
-
-        ll neg = (x - i) % x;
-        if(i < neg) {
-            ans += freq[i] * freq[neg];
-        } 
-        else if(i == neg) {
-            ans += freq[i] * (freq[i] - 1) / 2;
-        }
+        cnt[a[i] % x]++;
     }
-
+    
     std::cout << ans << "\n";  
 }
 
