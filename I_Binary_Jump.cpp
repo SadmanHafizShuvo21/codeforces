@@ -8,25 +8,22 @@ ll check (ll x) {
 void solve() {
     ll a, b;
     std::cin >> a >> b;
-
-    ll dif = std::llabs(a - b);;
-    if (dif == 0) {
-        std::cout << 0 << "\n";
-        return;
-    }
-    if (check(dif)) {
-        std::cout << 1 << "\n";
+    if (a == b) {
+        std::cout << "YES" << "\n";
         return;
     }
     
-    for (ll i = 1; i <= dif; i <<= 1) {
-        if (check(dif - i)) {
-            std::cout << 2 << "\n";
-            return;
-        }
+    if (a == 0 || b == 0) {
+        std::cout << "NO" << "\n";
+        return;
+    }
+    
+    ll x = std::llabs(a), y = std::llabs(b);
+    if (y > x) {
+        std::swap(x, y);
     }
 
-    std::cout << 3 << "\n";
+    std::cout << ((x % y == 0 && check(x / y)) ? "YES" : "NO") << "\n";
 }
 
 int main() {

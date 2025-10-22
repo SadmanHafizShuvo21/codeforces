@@ -1,0 +1,1 @@
+{"name":"Local: F_Binary_Jump","url":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\codeforce\\F_Binary_Jump.cpp","tests":[{"id":1761068764905,"input":"4\n10 45\n-1 1\n-15 -10\n-32 -25","output":"63\n-1\n-9\n-25"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sadman\\OneDrive\\Desktop\\cpp\\codeforce\\F_Binary_Jump.cpp","group":"local","local":true}
