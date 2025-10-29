@@ -21,6 +21,15 @@ void sieve(ll n) {
     }
 }
 
+bool is_prime(ll x) {
+    for (ll i = 2; i * i <= x; i++) {
+        if (x % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
 void solve() {
     ll n;
     std::cin >> n;
@@ -41,17 +50,8 @@ void solve() {
 
     if (ans == -1) {
         ll v = primes.back() + 2;
-        auto isPrime = [&](ll x) {
-            for (ll i = 2; i * i <= x; i++) {
-                if (x % i == 0) {
-                    return false;
-                }
-            }
-            return true;
-        };
-
         while (true) {
-            if (isPrime(v) && g % v != 0) {
+            if (is_prime(v) && g % v != 0) {
                 ans = v;
                 break;
             }

@@ -5,12 +5,12 @@ const ll inf = 1e18;
 
 void solve() {
     ll n;
-    std::string a, b;
-    std::cin >> n >> a >> b;
-    std::sort(a.begin(), a.end());
-    std::sort(b.begin(), b.end());
+    std::string s, s1;
+    std::cin >> n >> s >> s1;
+    std::sort(s.begin(), s.end());
+    std::sort(s1.begin(), s1.end());
     
-    std::cout << (a == b ? "YES" : "NO") << "\n";
+    std::cout << (s == s1 ? "YES" : "NO") << "\n";
 }
 
 int main() {

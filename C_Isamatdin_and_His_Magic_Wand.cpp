@@ -8,19 +8,15 @@ void solve() {
     std::cin >> n;
     std::vector<ll> a(n);
 
-    bool even = false, odd = false;  
+    ll cnt = 0;  
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
 
-        if (a[i] % 2) {
-            odd = true;
-        } 
-        else {
-            even = true;
-        }
+        cnt += (a[i] % 2);
     }
+    // std::cout << cnt << "\n";
 
-    if (even && odd) {  
+    if (cnt != n && cnt != 0) {  
         std::sort(a.begin(), a.end());
     }
     
