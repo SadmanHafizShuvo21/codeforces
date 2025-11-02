@@ -9,14 +9,19 @@ void solve() {
     for(int i = 0; i < n; i++) {
         std::cin >> pr[i].first >> pr[i].second;
     }
-
     std::sort(pr.begin(), pr.end());
 
-    ll ans = pr[0].first;
+    ll ans = pr[0].first, cur = pr[0].second;
     for(int i = 1; i < n; i++) {
-        ans = std::max(ans, pr[i].first - pr[i - 1].second);
+        if (pr[i].first > cur) {
+            ans = std::max(ans, pr[i].first - pr[i - 1].second);
+        }
+        cur = std::max(cur, pr[i].second);
     }
-    ans = std::max(ans, t - pr[n - 1].second);
+
+    if (cur < t) {
+        ans = std::max(ans, t - cur);
+    }
     std::cout << ans << "\n";
 }
 

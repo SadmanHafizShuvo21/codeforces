@@ -12,16 +12,16 @@ void solve() {
 
     ll fill = 0, cnt = 0;
     for (int i = 0; i < n; i++) {
+        if (fill == 0 && k > 0) {
+            fill = c;
+            k--;
+        }
+
         if (a[i] == 1) {
-            if (fill == 0) {
-                if (k == 0) {
-                    break;
-                }
-                k--;
-                fill = c;
+            if (fill > 0) {
+                cnt++;
+                fill--;
             }
-            cnt++;
-            fill--;
         }
         else{
             fill = 0;
