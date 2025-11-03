@@ -2,11 +2,13 @@
 using ll = long long;
 
 void solve() {
-    ll n, m, k;
-    std::cin >> n >> m >> k;
-    
-    ll ans = n / m;
-    ans = std::min(n, ans + k);
+    ll n, k, m;
+    std::cin >> n >> k >> m;
+
+    ll t = n / k;
+    ll l = std::min(n, t + m);
+    ll x = std::min(1 + m, l);
+    ll ans = (l + x) / 2;   
     std::cout << ans << "\n";
 }
 
