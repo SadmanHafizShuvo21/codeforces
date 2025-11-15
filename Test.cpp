@@ -200,3 +200,111 @@
 // }
 
 
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<bool> is_prime;   // Marks whether a number is prime
+vector<int> spf;         // Smallest prime factor for each number
+vector<int> primes;      // List of all primes up to n
+
+// -------------------------------
+// Precompute primes up to n
+// Uses sieve storing smallest prime factor (spf)
+// -------------------------------
+void PrimeSieve(int n) {
+    is_prime.assign(n+1, true);
+    spf.assign(n+1, 0);
+    is_prime[0] = is_prime[1] = false;
+
+    for (int i = 2; i <= n; i++) {
+        if (is_prime[i]) {
+            primes.push_back(i);
+            spf[i] = i;
+        }
+        for (int j = 0; j < (int)primes.size() && i * primes[j] <= n && primes[j] <= spf[i]; j++) {
+            is_prime[i * primes[j]] = false;
+            spf[i * primes[j]] = primes[j];
+        }
+    }
+}
+
+// -------------------------------
+// Check primality of x
+// Uses precomputed sieve if x <= n
+// Otherwise trial division by primes
+// -------------------------------
+bool isPrime(int x) {
+    if (x < (int)is_prime.size()) return is_prime[x];
+    for (int p : primes) {
+        if (1LL * p * p > x) break;
+        if (x % p == 0) return false;
+    }
+    return true;
+}
+
+// -------------------------------
+// Get distinct prime factors of x
+// Example: 60 -> {2, 3, 5}
+// -------------------------------
+vector<int> getPrimeFactors(int x) {
+    vector<int> factors;
+    while (x > 1) {
+        int p = spf[x];
+        factors.push_back(p);
+        while (x % p == 0) x /= p;
+    }
+    return factors;
+}
+
+// -------------------------------
+// Get prime factorization with exponents
+// Example: 60 -> {(2,2), (3,1), (5,1)}
+// -------------------------------
+vector<pair<int,int>> getPrimeFactorization(int x) {
+    vector<pair<int,int>> factors;
+    while (x > 1) {
+        int p = spf[x];
+        int cnt = 0;
+        while (x % p == 0) {
+            x /= p;
+            cnt++;
+        }
+        factors.emplace_back(p, cnt);
+    }
+    return factors;
+}
+
+// -------------------------------
+// Count number of divisors of x
+// Example: 60 -> 12
+// Formula: product of (exponent+1)
+// -------------------------------
+int countDivisors(int x) {
+    auto factors = getPrimeFactorization(x);
+    int divisors = 1;
+    for (auto [p, cnt] : factors) {
+        divisors *= (cnt + 1);
+    }
+    return divisors;
+}
+
+// -------------------------------
+// Get all divisors of x
+// Example: 12 -> {1,2,3,4,6,12}
+// -------------------------------
+vector<int> getAllDivisors(int x) {
+    vector<int> divisors = {1};
+    auto factors = getPrimeFactorization(x);
+    for (auto [p, cnt] : factors) {
+        int sz = divisors.size();
+        int power = 1;
+        for (int i = 0; i < cnt; i++) {
+            power *= p;
+            for (int j = 0; j < sz; j++) {
+                divisors.push_back(divisors[j] * power);
+            }
+        }
+    }
+    sort(divisors.begin(), divisors.end());
+    return divisors;
+}
