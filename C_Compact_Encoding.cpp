@@ -12,25 +12,15 @@ void solve() {
         return;
     }
 
-    ll cnt = 0, temp = n;
-    while (temp > 0) {
-        cnt++;
-        temp >>= 7;
-    }
-
     std::vector<ll> a;
-    for (int i = 0; i < cnt; i++) {
-        ll shift = 7 * (cnt - 1 - i);
-        ll x = (n >> shift) & 0x7F;
-
-        if (i < cnt - 1) {
-            x |= 0x80;
-        }
-        a.push_back(x);
+    while (n > 0) {
+        a.push_back(n % 128);
+        n /= 128;
     }
-    
+
+    std::reverse(a.begin(), a.end());
     for (int i = 0; i < a.size(); i++) {
-        std::cout << a[i] << " \n"[i == a.size() - 1];
+        std::cout << (i == a.size() - 1 ? a[i] : a[i] + 128) << " \n"[i == a.size() - 1];
     }
 }
 
@@ -38,10 +28,5 @@ int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    // int t;
-    // std::cin >> t;
-    // while(t--) {
-    //     solve();
-    // }
     solve();
 }
