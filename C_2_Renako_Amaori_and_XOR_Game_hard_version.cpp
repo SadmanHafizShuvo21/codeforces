@@ -5,7 +5,6 @@ const ll inf = 1e18;
 const ll N = 2e5 + 7;
 const ll error = 1e-6;
 
-
 void solve() {
     ll n;
     std::cin >> n;
@@ -18,15 +17,29 @@ void solve() {
         std::cin >> b[i];
     }
     
-    ll cnt = 0, l = -1;
+    ll x = 0;
     for (int i = 0; i < n; i++) { 
-        if (a[i] != b[i]) {
-            cnt++;
-            l = i + 1; 
+        x ^= (a[i] ^ b[i]);
+    }
+
+    if (x == 0) {
+        std::cout << "Tie" << "\n";
+        return;
+    }
+
+    ll hb = 31;
+    while (hb >= 0 && ((x >> hb) & 1) == 0) {  
+        hb--;
+    }
+
+    ll l = -1;
+    for (int i = 0; i < n; i++) {
+        if (((a[i] ^ b[i]) >> hb) & 1) {
+            l = i + 1;
         }
     }
 
-    if (cnt % 2 == 0) {
+    if (l == -1) {
         std::cout << "Tie" << "\n";
         return;
     }
