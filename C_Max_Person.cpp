@@ -3,33 +3,30 @@ using ll = long long;
 using lld = long double;
 const ll inf = 1e18;
 const ll N = 2e5 + 7;
-const ll error = 1e-6;
+const lld error = 1e-6;
 
 void solve() {
     ll n, m;
     std::cin >> n >> m;
 
-    ll k = 0, sum = 0;
-    while (true) {
-        if (k + 1 >= 62) {
-            break;
-        }
-        ll x = n * ((1LL << (k + 2)) - 2); 
-        if (x > m) {
-            break;
-        }
-        k++;
-    }
-
-    sum = n * ((1LL << (k + 1)) - 2);
-    ll rem = m - sum;
-    if (rem < 0) {
-        std::cout << -1 << "\n";
+    if (n == 1) {
+        std::cout <<((m % 2 != 0) ? -1 : __builtin_popcountll(m) )<< "\n";
         return;
     }
 
-    ll ans = n * k + __builtin_popcountll(rem);
-    std::cout << ans << "\n";
+    ll ans = 0;
+    for (ll i = 1; m > 0 && i <= 63; i++) {
+        ll cost = (1LL << i);
+        if (cost > m) {
+            break;
+        }
+
+        ll cnt = std::min(n, m / cost);
+        m -= cnt * cost;
+        ans += cnt;
+    }
+
+    std::cout << (m == 0 ? ans : -1) << "\n";
 }
 
 int main() {
@@ -38,7 +35,7 @@ int main() {
 
     int t;
     std::cin >> t;
-    while(t--) {
+    while (t--) {
         solve();
     }
     // solve();
