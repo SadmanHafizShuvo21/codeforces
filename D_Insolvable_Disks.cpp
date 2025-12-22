@@ -18,15 +18,17 @@ void solve() {
         return;
     }
 
-    ll ans = 0;
-    for (int i = 0; i < n - 1; i++) {
-        if (i == 0 || a[i] - a[i - 1] != a[i + 1] - a[i]) {
-            ans++;
+    bool ok = true;
+    for (int i = 1; i < n - 1; i++) {
+        if (a[i] - a[i - 1] > a[i + 1] - a[i]) {
+            ok = false;
+            break;
         }
     }
 
-    std::cout << ans << "\n";
+    std::cout << (ok ? n - 1 : n / 2) << "\n";
 }
+
 
 int main() {
     std::ios::sync_with_stdio(false);
