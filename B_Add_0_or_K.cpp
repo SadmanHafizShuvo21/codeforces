@@ -10,7 +10,7 @@ void solve() {
     for (int i = 0; i < n; i++) {
         ll x;
         std::cin >> x;
-        x += (ll)(x + 1) % k * k;
+        x += (ll)(x % (k + 1)) * k;
         std::cout << x << " \n"[i == n - 1];
     }
 }
