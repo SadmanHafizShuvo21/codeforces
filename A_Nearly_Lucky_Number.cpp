@@ -1,6 +1,5 @@
 //01 July 2024
 #include<bits/stdc++.h>
-#define sadman {std::ios_base::sync_with_stdio(0);std::cin.tie(0);std::cout.tie(0);}
 
 using ll = long long;
 void solve(){
@@ -17,7 +16,8 @@ void solve(){
 }
 int main(){
 
-    sadman
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);std::cout.tie(0);
 
     solve();
 
