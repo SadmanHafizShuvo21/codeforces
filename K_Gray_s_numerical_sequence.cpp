@@ -4,8 +4,8 @@ using ull = unsigned long long;
 using llx = __int128;
 const ull MOD = 1e9 + 9;
 
-ull modpow(ull a, ull e, ull mod) {
-    ull r = 1;
+ll modpow(ll a, ll e, ll mod) {
+    ll r = 1;
     a %= mod;
     while (e) {
         if (e & 1) {
@@ -18,12 +18,12 @@ ull modpow(ull a, ull e, ull mod) {
 }
 
 void solve() {
-    ull n;
+    ll n;
     std::cin >> n;
     
-    ull p = modpow(2, n + 1, MOD);
-    ull q = ((ull)(n % MOD) + 2) % MOD;
-    ull ans = (p - q) % MOD;
+    ll p = modpow(2, n + 1, MOD);
+    ll q = ((ll)(n % MOD) + 2) % MOD;
+    ll ans = (p - q) % MOD;
     
     std::cout << (ans < 0 ? ans + MOD : ans) << "\n";
 }
@@ -32,5 +32,4 @@ int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
     solve();
-    return 0;
 }

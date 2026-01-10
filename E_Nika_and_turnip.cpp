@@ -17,8 +17,7 @@ void solve() {
     for (int i = 0; i < n; i++) {
         sum += (lld)a[i] / (i + 1);
     }
-    std::cout.setf(std::ios::fixed);
-    std::cout << std::fixed << std::setprecision(12) << (sum >= x ? "YES" : "NO") << "\n";
+    std::cout << ((sum + e) >= x ? "YES" : "NO") << "\n";
 }
 
 int main() {
