@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using ll = long long;
-
 const int MAX = 1e5 + 5;
 ll n, m, ans;
 std::vector<ll> adj[MAX];
@@ -13,8 +12,7 @@ void dfs(ll u, ll p, ll c) {
     }
 
     bool is_leaf = true;
-    for (ll i = 0; i < adj[u].size(); i++) {
-        ll v = adj[u][i];
+    for (auto v : adj[u]) {
         if (v == p) {
             continue;
         }
