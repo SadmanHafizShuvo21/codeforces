@@ -1,0 +1,1 @@
+{"name":"Local: F_School_Arrangement","url":"d:\\codeforces\\F_School_Arrangement.cpp","tests":[{"id":1768923389001,"input":"3\n3 3\n20 5\n60 14","output":"1\n2\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\codeforces\\F_School_Arrangement.cpp","group":"local","local":true}
