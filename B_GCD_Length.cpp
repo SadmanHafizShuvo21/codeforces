@@ -1,0 +1,36 @@
+// 23 Jan 2026
+#include <bits/stdc++.h>
+using ll = long long;
+using lld = long double;
+using llx = __int128;
+const ll inf = 1e18;
+const ll N = 2e5 + 7;
+const ll error = 1e-6;
+
+void solve() {
+    ll a, b, c;
+    std::cin >> a >> b >> c;
+
+    std::string x = '1' + std::string(a - 1, '0');
+    std::string y = '1' + std::string(b - 1, '0');
+
+    if (a > b) {
+        x[a - c]++;
+    }
+    else {
+        y[b - c]++;
+    }
+    std::cout << x << " " << y << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    int t;
+    std::cin >> t;
+    while (t--) {
+        solve();
+    }
+    // solve();
+}
