@@ -1,4 +1,4 @@
-// 25 Jan 2026
+// 27 Jan 2026
 #include <bits/stdc++.h>
 using ll = long long;
 using lld = long double;
@@ -10,26 +10,25 @@ const ll error = 1e-6;
 void solve() {
     ll n;
     std::cin >> n;
-    std::vector<ll> a(n);
-    std::map<ll, ll> mp;
+    std::vector<ll> a(n), b(n);
     for (int i = 0; i < n; i++) {
         std::cin >> a[i];
-        mp[a[i]]++;
     }
 
-    ll mx = 0;
-    while(mp[mx]) {
-        mx++;
-    }
-    
-    for (int i = 0; i < mx; i++) {
-        if (mp[i] < 2) {
-            std::cout << "YES" << "\n";
-            return;
-        }
+    std::sort(a.begin(), a.end());
+    std::vector<ll> pref(n + 1, 0);
+    for (int i = 0; i < n; i++) {
+        std::cin >> b[i];
+        pref[i + 1] = pref[i] + b[i];
     }
 
-    std::cout << "NO" << "\n";
+    ll ans = -inf;
+    for (int i = 0; i < n; i++) {
+        ll r = std::upper_bound(pref.begin(), pref.end(), n - i) - pref.begin();
+        ans = std::max(ans, a[i] * (r - 1));
+    }
+
+    std::cout << ans << "\n";
 
 }
 
