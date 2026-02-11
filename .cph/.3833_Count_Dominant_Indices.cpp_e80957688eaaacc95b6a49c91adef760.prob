@@ -1,0 +1,1 @@
+{"name":"Local: 3833_Count_Dominant_Indices","url":"d:\\codeforces\\3833_Count_Dominant_Indices.cpp","tests":[{"id":1770554103177,"input":"3\n5 4 3","output":"2"},{"id":1770554856327,"input":"3\n4 1 2","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\codeforces\\3833_Count_Dominant_Indices.cpp","group":"local","local":true}
