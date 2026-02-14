@@ -10,22 +10,19 @@ const ll error = 1e-6;
 void solve() {
     ll n;
     std::cin >> n;
-    std::vector<ll> a(n);
+    std::vector<std::vector<ll>> a(n, std::vector<ll>(n));
     for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
+        for (int j = 0; j < n; j++) {
+            std::cin >> a[i][j];
+        }
     }
 
     ll ans = 0;
     for (int i = 0; i < n; i++) {
-        ll x = a[i];
-        for (int j = i - x, k = 1; j >= 0 && k < x; j -= x, k++) {
-            ans += (a[j] == k);
-        }
-        for (int j = i + x, k = 1; j < n && k <= x; j += x, k++) {
-            ans += (a[j] == k);
+        for (int j = i + 1; j < n; j++) {
+            ans += (a[i][j] == 1 && a[j][i] == 1);
         }
     }
-
     std::cout << ans << '\n';
 }
 
@@ -33,11 +30,11 @@ int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    int t;
-    std::cin >> t;
-    while (t--) {
-        solve();
-    }
-    // solve();
+    // int t;
+    // std::cin >> t;
+    // while (t--) {
+    //     solve();
+    // }
+    solve();
 }
 
