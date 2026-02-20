@@ -1,33 +1,35 @@
-// 17 Feb 2026
 #include <bits/stdc++.h>
+using namespace std;
+
 using ll = long long;
-using lld = long double;
-using llx = __int128;
-const ll inf = 1e18;
-const ll N = 2e5 + 7;
-const ll error = 1e-6;
 
 void solve() {
     ll n;
-    std::cin >> n;
-    std::set<ll> s;
-    for (int i = 0; i < n; i++) {
-        ll x;
-        std::cin >> x;
-        s.insert(x);
+    cin >> n;
+    
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++) {
+        cin >> a[i];
     }
-    std::cout << s.size() - 1 << '\n';
+    
+    set<ll> st;
+    
+    for (ll i = 0; i < n; i++) {
+        if (a[i] == 0) continue;
+        ll hb = 63 - __builtin_clz(a[i]); // highest set bit
+        st.insert(hb);
+    }
+    
+    cout << st.size() << "\n";
 }
 
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    int t;
-    std::cin >> t;
+    ll t;
+    cin >> t;
     while (t--) {
         solve();
     }
-    // solve();
 }
-
