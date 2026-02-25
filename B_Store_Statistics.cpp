@@ -20,7 +20,7 @@ void solve() {
     }
 
     ll cur = 0;
-    std::vector<ll>cnt(m);
+    std::vector<ll> cnt(m);
     for (int i = 1; i <= m; i++) {
         cur += a[i];
         cnt[i - 1] = cur;
