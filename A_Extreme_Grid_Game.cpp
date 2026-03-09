@@ -10,7 +10,12 @@ const ll error = 1e-6;
 void solve() {
     ll n, m, k;
     std::cin >> n >> m >> k;
-    std::cout << (n > k && m > k ? "Matthew" : "Munir") << "\n";
+
+    if (k == 1) {
+        std::cout << ((n * m) % (k + 1) == 0 ? "Matthew" : "Munir") << "\n";
+        return;
+    }
+    std::cout << "Munir" << "\n";
 }
 
 int main() {
