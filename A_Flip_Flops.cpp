@@ -1,0 +1,39 @@
+// 23 March 2026
+#include <bits/stdc++.h>
+using ll = long long;
+using lld = long double;
+using llx = __int128;
+const ll inf = 1e18;
+const ll N = 2e5 + 7;
+const ll error = 1e-6;
+
+void solve() {
+    ll n, c, k;
+    std::cin >> n >> c >> k;
+    std::vector<ll> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
+    }
+
+    std::sort(a.begin(), a.end());
+    for (int i = 0; i < n; i++) {
+        if (c >= a[i]) {
+            ll v = std::min(k, c - a[i]);
+            c += a[i] + v;
+            k -= v;
+        }
+    }
+    std::cout << c << "\n";
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    int t;
+    std::cin >> t;
+    while (t--) {
+        solve();
+    }
+    // solve();
+}
