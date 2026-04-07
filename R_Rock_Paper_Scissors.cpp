@@ -15,7 +15,29 @@ void solve() {
         return;
     }
 
-    std::cout << ((m == 0 || m == 2 * n || m == 5 * n) ? "No" : "Yes") << "\n";
+    bool ok = false;
+    if (m % 2 == 0) {
+        ll s = m / 2;
+        if (s > 0 && s < n) {
+            ok = true;
+        }
+    }
+
+    if (m % 5 == 0) {
+        ll p = m / 5;
+        if (p > 0 && p < n) {
+            ok = true;
+        }
+    }
+
+    if ((m - 2 * n) >= 0 && (m - 2 * n) % 3 == 0) {
+        ll p = (m - 2 * n) / 3;
+        if (p > 0 && p < n) {
+            ok = true;
+        }
+    }
+
+    std::cout << (ok ? "Yes" : "No") << "\n";
 }
 
 int main() {
