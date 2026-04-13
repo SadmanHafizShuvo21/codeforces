@@ -26,18 +26,17 @@ void solve() {
         std::cin >> a[i];
     }
 
-    ll ans = 1, l = 1, r = n;
-    while(l <= r) {
-        ll mid = (l + r) / 2;
+    ll l = 0, r = n;
+    while(l < r) {
+        ll mid = (l + r + 1) / 2;
         if (check(a, mid, k)) {
-            ans = mid;
-            l = mid + 1;
+            l = mid;
         }
         else {
             r = mid - 1;
         }
     }
-    std::cout << ans << "\n";
+    std::cout << l << "\n";
 }
 
 int main() {
