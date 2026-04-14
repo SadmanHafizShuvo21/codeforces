@@ -7,6 +7,17 @@ const ll inf = 1e18;
 const ll N = 2e5 + 7;
 const ll error = 1e-6;
 
+void solve2() {
+    ll n;
+    std::cin >> n;
+
+    ll cnt = 0;
+    while(n != 1) {
+        n = (n % 2 == 0) ? n / 2 : 3 * n + 1;
+        cnt++;
+    }
+    std::cout << cnt << "\n";
+}
 void solve() {
     ll n;
     std::cin >> n;
@@ -15,7 +26,6 @@ void solve() {
         n = (n % 2 == 0) ? n / 2 : 3 * n + 1;
         std::cout << n << " ";
     }
-    
 }
 
 int main() {
