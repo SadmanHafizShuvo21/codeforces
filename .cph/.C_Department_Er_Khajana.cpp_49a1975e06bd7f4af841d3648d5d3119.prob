@@ -1,0 +1,1 @@
+{"name":"Local: C_Department_Er_Khajana","url":"/home/sadman/codeforces/C_Department_Er_Khajana.cpp","tests":[{"id":1776959029836,"input":"4\n13 13 13\n10 14 14\n11 15 17\n0 0 19","output":"0\n4\n-1\n19"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/sadman/codeforces/C_Department_Er_Khajana.cpp","group":"local","local":true}

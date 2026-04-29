@@ -1,0 +1,1 @@
+{"name":"Local: AANumberBetweenTwoOthers","url":"/home/sadman/codeforces/AANumberBetweenTwoOthers.cpp","tests":[{"id":1777044208654,"input":"5\n1 2\n1 3\n1234567890 12345678900\n2 8\n7 84\n","output":"NO\nYES\nYES\nYES\nYES\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/sadman/codeforces/AANumberBetweenTwoOthers.cpp","group":"local","local":true}
